@@ -51,7 +51,7 @@ variable "bgp" {
 }
 
 # Type: list(object), with fields:
-# - id (string, required): The name of the interface
+# - name (string, required): The name of the interface
 # - ip_range (string, optional): IP address and range of the interface.
 # - interconnect_attachment (string, optional): The name or resource link to the VLAN interconnect for this interface.
 # - vpn_tunnel (string, optional): The name or resource link to the VPN tunnel this interface will be linked to.
@@ -70,7 +70,7 @@ variable "interfaces" {
 }
 
 # Type: list(object), with fields:
-# - id (string, required): The id (purpose or sequence number) to attach to the nat name
+# - name (string, required): Name of the NAT.
 # - nat_ip_allocate_option (string, optional): How external IPs should be allocated for this NAT. Defaults to MANUAL_ONLY if nat_ips are set, else AUTO_ONLY.
 # - source_subnetwork_ip_ranges_to_nat (string, optional): How NAT should be configured per Subnetwork. Defaults to ALL_SUBNETWORKS_ALL_IP_RANGES.
 # - nat_ips (list(number), optional): Self-links of NAT IPs.

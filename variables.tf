@@ -51,25 +51,6 @@ variable "bgp" {
 }
 
 # Type: list(object), with fields:
-# - name (string, required): The name of the interface
-# - ip_range (string, optional): IP address and range of the interface.
-# - interconnect_attachment (string, optional): The name or resource link to the VLAN interconnect for this interface.
-# - vpn_tunnel (string, optional): The name or resource link to the VPN tunnel this interface will be linked to.
-# - peers (list(object), optional):
-#   - peer_ip_address (string, required): IP address of the BGP interface outside Google Cloud Platform.
-#   - peer_asn (string, required): Peer BGP Autonomous System Number (ASN).
-#   - advertised_route_priority (number, optional): The priority of routes advertised to this BGP peer.
-#   - advertised_groups (string, optional): User-specified list of prefix groups to advertise in custom mode
-#   - advertised_ip_ranges (list(object), optional): User-specified list of individual IP ranges to advertise.
-#     - range (string, required):  The IP range to advertise.
-#     - description (string, optional): User-specified description for the IP range.
-variable "interfaces" {
-  description = "Interfaces to deploy on this router."
-  type        = any
-  default     = []
-}
-
-# Type: list(object), with fields:
 # - name (string, required): Name of the NAT.
 # - nat_ip_allocate_option (string, optional): How external IPs should be allocated for this NAT. Defaults to MANUAL_ONLY if nat_ips are set, else AUTO_ONLY.
 # - source_subnetwork_ip_ranges_to_nat (string, optional): How NAT should be configured per Subnetwork. Defaults to ALL_SUBNETWORKS_ALL_IP_RANGES.

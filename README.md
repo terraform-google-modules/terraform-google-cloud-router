@@ -26,14 +26,18 @@ Functional examples are included in the
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| bucket\_name | The name of the bucket to create | string | n/a | yes |
-| project\_id | The project ID to deploy to | string | n/a | yes |
+| bgp | BGP information specific to this router. | any | `"null"` | no |
+| name | Name of the router | string | n/a | yes |
+| nats | NATs to deploy on this router. | any | `<list>` | no |
+| network | A reference to the network to which this router belongs | string | n/a | yes |
+| project | The project ID to deploy to | string | n/a | yes |
+| region | Region where the router resides | string | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| bucket\_name |  |
+| router | The created router |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

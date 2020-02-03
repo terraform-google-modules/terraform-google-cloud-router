@@ -14,13 +14,6 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 2.0"
-}
-
-module "cloud_router" {
-  source = "../.."
-
-  project_id  = var.project_id
-  bucket_name = var.bucket_name
+terraform {
+  required_version = ">= 0.12"
 }

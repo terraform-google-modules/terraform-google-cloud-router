@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,15 @@
  * limitations under the License.
  */
 
-output "router" {
-  value       = google_compute_router.router
-  description = "The created router"
+provider "google" {
+  version = "~> 3.0"
+}
+
+module "cloud_router" {
+  source = "../../"
+
+  name = "example-router"
+  project  = "example-project"
+  network = "default"
+  region = "us-central1"
 }

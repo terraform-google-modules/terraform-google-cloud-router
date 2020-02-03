@@ -1,10 +1,6 @@
 # terraform-google-cloud-router
 
-This module was generated from [terraform-google-module-template](https://github.com/terraform-google-modules/terraform-google-module-template/), which by default generates a module that simply creates a GCS bucket. As the module develops, this README should be updated.
-
-The resources/services/activations/deletions that this module will create/trigger are:
-
-- Create a GCS bucket with the provided name
+This module handles opinionated Google Cloud Platform routing.
 
 ## Usage
 
@@ -15,8 +11,10 @@ module "cloud_router" {
   source  = "terraform-google-modules/cloud-router/google"
   version = "~> 0.1"
 
-  project_id  = "<PROJECT ID>"
-  bucket_name = "gcs-test-bucket"
+  name = "example-router"
+  project  = "<PROJECT ID>"
+  region = "us-central1"
+  network = "default"
 }
 ```
 
@@ -28,14 +26,18 @@ Functional examples are included in the
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| bucket\_name | The name of the bucket to create | string | n/a | yes |
-| project\_id | The project ID to deploy to | string | n/a | yes |
+| bgp | BGP information specific to this router. | any | `"null"` | no |
+| name | Name of the router | string | n/a | yes |
+| nats | NATs to deploy on this router. | any | `<list>` | no |
+| network | A reference to the network to which this router belongs | string | n/a | yes |
+| project | The project ID to deploy to | string | n/a | yes |
+| region | Region where the router resides | string | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| bucket\_name |  |
+| router | The created router |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
@@ -55,7 +57,7 @@ The following dependencies must be available:
 A service account with the following roles must be used to provision
 the resources of this module:
 
-- Storage Admin: `roles/storage.admin`
+- Network Admin: `roles/compute.networkAdmin`
 
 The [Project Factory module][project-factory-module] and the
 [IAM module][iam-module] may be used in combination to provision a
@@ -66,7 +68,7 @@ service account with the necessary roles applied.
 A project with the following APIs enabled must be used to host the
 resources of this module:
 
-- Google Cloud Storage JSON API: `storage-api.googleapis.com`
+- Google Cloud Compute Engine API: `compute.googleapis.com`
 
 The [Project Factory module][project-factory-module] can be used to
 provision a project with the necessary APIs enabled.
@@ -76,7 +78,6 @@ provision a project with the necessary APIs enabled.
 Refer to the [contribution guidelines](./CONTRIBUTING.md) for
 information on contributing to this module.
 
-[iam-module]: https://registry.terraform.io/modules/terraform-google-modules/iam/google
 [project-factory-module]: https://registry.terraform.io/modules/terraform-google-modules/project-factory/google
 [terraform-provider-gcp]: https://www.terraform.io/docs/providers/google/index.html
 [terraform]: https://www.terraform.io/downloads.html

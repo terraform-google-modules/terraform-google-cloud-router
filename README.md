@@ -11,9 +11,9 @@ module "cloud_router" {
   source  = "terraform-google-modules/cloud-router/google"
   version = "~> 0.1"
 
-  name = "example-router"
-  project  = "<PROJECT ID>"
-  region = "us-central1"
+  name    = "example-router"
+  project = "<PROJECT ID>"
+  region  = "us-central1"
   network = "default"
 }
 ```

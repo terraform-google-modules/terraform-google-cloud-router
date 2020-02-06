@@ -40,6 +40,5 @@ module "interface" {
     peer_ip_address           = var.peer.peer_ip_address
     peer_asn                  = var.peer.peer_asn
     advertised_route_priority = lookup(var.peer, "advertised_route_priority", null)
-    advertised_groups         = var.peer.advertised_groups
   }]
 }

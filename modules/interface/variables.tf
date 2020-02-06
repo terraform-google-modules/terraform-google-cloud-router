@@ -60,10 +60,6 @@ variable "interconnect_attachment" {
 # - peer_ip_address (string, required): IP address of the BGP interface outside Google Cloud Platform.
 # - peer_asn (string, required): Peer BGP Autonomous System Number (ASN).
 # - advertised_route_priority (number, optional): The priority of routes advertised to this BGP peer.
-# - advertised_groups (string, required): User-specified list of prefix groups to advertise in custom mode
-# - advertised_ip_ranges (list(object), optional): User-specified list of individual IP ranges to advertise.
-#   - range (string, required):  The IP range to advertise.
-#   - description (string, optional): User-specified description for the IP range.
 variable "peers" {
   type        = any
   description = "BGP peers for this interface."

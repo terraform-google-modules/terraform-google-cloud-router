@@ -38,14 +38,4 @@ resource "google_compute_router_peer" "peers" {
   peer_ip_address           = each.value.peer_ip_address
   peer_asn                  = each.value.peer_asn
   advertised_route_priority = lookup(each.value, "advertised_route_priority", null)
-
-  advertise_mode    = "CUSTOM"
-  advertised_groups = lookup(each.value, "advertised_groups", null)
-  dynamic "advertised_ip_ranges" {
-    for_each = lookup(each.value, "advertised_ip_ranges", [])
-    content {
-      range       = advertised_ip_ranges.value.range
-      description = lookup(advertised_ip_ranges.value, "description", null)
-    }
-  }
 }

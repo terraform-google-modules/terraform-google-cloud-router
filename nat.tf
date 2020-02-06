@@ -34,6 +34,11 @@ resource "google_compute_router_nat" "nats" {
   tcp_established_idle_timeout_sec = lookup(each.value, "tcp_established_idle_timeout_sec", 1200)
   tcp_transitory_idle_timeout_sec  = lookup(each.value, "tcp_transitory_idle_timeout_sec", 30)
 
+  log_config {
+    enable = true
+    filter = lookup(lookup(each.value, "log_config", {}), "filter", "ALL")
+  }
+
   dynamic "subnetwork" {
     for_each = lookup(each.value, "subnetworks", [])
     content {

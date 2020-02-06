@@ -60,6 +60,8 @@ variable "bgp" {
 # - icmp_idle_timeout_sec (number, optional): Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 # - tcp_established_idle_timeout_sec (number, optional): Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
 # - tcp_transitory_idle_timeout_sec (number, optional): Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
+# - log_config (object, optional):
+#    - filter: Specifies the desired filtering of logs on this NAT. Defaults to "ALL".
 # - subnetworks (list(objects), optional):
 #   - name (string, required): Self-link of subnetwork to NAT.
 #   - source_ip_ranges_to_nat (string, required): List of options for which source IPs in the subnetwork should have NAT enabled.

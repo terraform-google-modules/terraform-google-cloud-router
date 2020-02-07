@@ -1,4 +1,4 @@
-# terraform-google-cloud-router
+# [terraform-google-cloud-router](https://registry.terraform.io/modules/terraform-google-modules/cloud-router/google)
 
 This module handles opinionated Google Cloud Platform routing.
 

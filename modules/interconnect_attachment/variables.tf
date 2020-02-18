@@ -80,7 +80,6 @@ variable "interface" {
 }
 
 # Type: object, with fields:
-# - peer_ip_address (string, required): IP address of the BGP interface outside Google Cloud Platform.
 # - peer_asn (string, required): Peer BGP Autonomous System Number (ASN).
 # - advertised_route_priority (number, optional): The priority of routes advertised to this BGP peer.
 variable "peer" {

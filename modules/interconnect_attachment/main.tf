@@ -36,8 +36,10 @@ module "interface" {
   ip_range                = google_compute_interconnect_attachment.attachment.cloud_router_ip_address
   interconnect_attachment = google_compute_interconnect_attachment.attachment.self_link
   peers = [{
-    name                      = var.peer.name
-    peer_ip_address           = var.peer.peer_ip_address
+    name = var.peer.name
+
+    # Peer IP Address must not contain the subnet mask, else will throw an invalid IP address error.
+    peer_ip_address           = element(split("/", google_compute_interconnect_attachment.attachment.customer_router_ip_address), 0)
     peer_asn                  = var.peer.peer_asn
     advertised_route_priority = lookup(var.peer, "advertised_route_priority", null)
   }]

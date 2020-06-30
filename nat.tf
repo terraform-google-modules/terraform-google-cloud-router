@@ -44,7 +44,7 @@ resource "google_compute_router_nat" "nats" {
     content {
       name                     = subnetwork.value.name
       source_ip_ranges_to_nat  = subnetwork.value.source_ip_ranges_to_nat
-      secondary_ip_range_names = subnetwork.value.secondary_ip_range_names
+      secondary_ip_range_names = lookup(subnetwork.value, "secondary_ip_range_names", [])
     }
   }
 }

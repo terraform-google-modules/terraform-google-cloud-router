@@ -65,7 +65,7 @@ variable "bgp" {
 # - subnetworks (list(objects), optional):
 #   - name (string, required): Self-link of subnetwork to NAT.
 #   - source_ip_ranges_to_nat (string, required): List of options for which source IPs in the subnetwork should have NAT enabled.
-#   - secondary_ip_range_names (string, required): List of the secondary ranges of the subnetwork that are allowed to use NAT.
+#   - secondary_ip_range_names (string, optional): List of the secondary ranges of the subnetwork that are allowed to use NAT.
 variable "nats" {
   description = "NATs to deploy on this router."
   type        = any

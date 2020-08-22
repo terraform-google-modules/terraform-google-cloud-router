@@ -10,10 +10,10 @@ variable "network" {
 
 variable "project" {
   type        = string
-  description = "The project ID to deploy to"
+  description = "The GCP project ID"
 }
 
 variable "region" {
   type        = string
-  description = "Region where the router resides"
+  description = "The GCP region"
 }

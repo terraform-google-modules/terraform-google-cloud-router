@@ -14,12 +14,17 @@
  * limitations under the License.
  */
 
-output "bucket_name" {
-  description = "The name of the bucket."
-  value       = module.example.bucket_name
-}
-
 output "project_id" {
   description = "The ID of the project in which resources are provisioned."
   value       = var.project_id
+}
+
+output "cloud_router_name" {
+  description = "The name of the cloud router"
+  value       = random_pet.main.id
+}
+
+output "region" {
+  description = "The region of the cloud router"
+  value       = var.region
 }

@@ -18,3 +18,9 @@ variable "project_id" {
   description = "The ID of the project in which to provision resources."
   type        = string
 }
+
+variable "region" {
+  description = "The ID of the project in which to provision resources."
+  type        = string
+  default     = "europe-west1"
+}

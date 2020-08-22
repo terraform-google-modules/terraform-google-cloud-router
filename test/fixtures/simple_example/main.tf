@@ -25,8 +25,36 @@ resource "random_pet" "main" {
 }
 
 module "example" {
-  source = "../../../examples/simple_example"
+  source = "../../../examples/simple"
 
-  project_id  = var.project_id
-  bucket_name = random_pet.main.id
+  project = var.project_id
+  name    = random_pet.main.id
+  network = module.vpc.network_name
+  region  = var.region
+}
+
+module "vpc" {
+  source  = "terraform-google-modules/network/google"
+  version = "~> 2.5"
+
+  project_id   = var.project_id
+  network_name = random_pet.main.id
+  routing_mode = "GLOBAL"
+
+  subnets = [
+    {
+      subnet_name   = "subnet-01"
+      subnet_ip     = "10.10.10.0/24"
+      subnet_region = var.region
+    },
+  ]
+
+  secondary_ranges = {
+    subnet-01 = [
+      {
+        range_name    = "subnet-01-secondary-01"
+        ip_cidr_range = "192.168.64.0/24"
+      },
+    ]
+  }
 }

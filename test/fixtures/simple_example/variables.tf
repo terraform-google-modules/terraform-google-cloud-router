@@ -20,7 +20,7 @@ variable "project_id" {
 }
 
 variable "region" {
-  description = "The ID of the project in which to provision resources."
+  description = "The GCP region."
   type        = string
   default     = "europe-west1"
 }

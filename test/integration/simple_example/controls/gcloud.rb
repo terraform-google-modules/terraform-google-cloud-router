@@ -17,14 +17,7 @@ region = attribute("region")
 cloud_router_name = attribute("cloud_router_name")
 
 control "gcloud" do
-  title "Gcloud checks: enabled compute api, and cloud router existence"
-
-  describe command("gcloud --project=#{project_id} services list --enabled") do
-    its(:exit_status) { should eq 0 }
-    its(:stderr) { should eq "" }
-
-    its(:stdout) { should match "compute.googleapis.com" }
-  end
+  title "Gcloud checks: cloud router existence"
 
   describe json({ command: "gcloud compute routers describe #{cloud_router_name} --region=#{region} --project=#{project_id} --format=json"}) do
     its("name") { should eq cloud_router_name }

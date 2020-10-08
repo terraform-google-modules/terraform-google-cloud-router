@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0](https://www.github.com/terraform-google-modules/terraform-google-cloud-router/compare/v0.2.0...v0.3.0) (2020-10-08)
+
+
+### Features
+
+* pin devtools to 0.12.0 ([#13](https://www.github.com/terraform-google-modules/terraform-google-cloud-router/issues/13)) ([b8fd4c9](https://www.github.com/terraform-google-modules/terraform-google-cloud-router/commit/b8fd4c94c26b9209ba4463ea27a3522dd423a1da))
+
 ## [0.2.0](https://www.github.com/terraform-google-modules/terraform-google-cloud-router/compare/v0.1.0...v0.2.0) (2020-06-30)
 
 

@@ -12,12 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-control "gcloud" do
-  title "gcloud"
+project_id = attribute("project_id")
+region = attribute("region")
+cloud_router_name = attribute("cloud_router_name")
 
-  describe command("gcloud --project=#{attribute("project_id")} services list --enabled") do
-    its(:exit_status) { should eq 0 }
-    its(:stderr) { should eq "" }
-    its(:stdout) { should match "storage-api.googleapis.com" }
+control "gcloud" do
+  title "Gcloud checks: cloud router existence"
+
+  describe json({ command: "gcloud compute routers describe #{cloud_router_name} --region=#{region} --project=#{project_id} --format=json"}) do
+    its("name") { should eq cloud_router_name }
+    its("kind") { should eq "compute#router" }
+    its("region") { should eq "https://www.googleapis.com/compute/v1/projects/#{project_id}/regions/#{region}"}
+    its("selfLink") { should eq "https://www.googleapis.com/compute/v1/projects/#{project_id}/regions/#{region}/routers/#{cloud_router_name}"}
   end
 end

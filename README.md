@@ -25,13 +25,13 @@ Functional examples are included in the
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| bgp | BGP information specific to this router. | any | `"null"` | no |
-| name | Name of the router | string | n/a | yes |
-| nats | NATs to deploy on this router. | any | `<list>` | no |
-| network | A reference to the network to which this router belongs | string | n/a | yes |
-| project | The project ID to deploy to | string | n/a | yes |
-| region | Region where the router resides | string | n/a | yes |
+|------|-------------|------|---------|:--------:|
+| bgp | BGP information specific to this router. | `any` | `null` | no |
+| name | Name of the router | `string` | n/a | yes |
+| nats | NATs to deploy on this router. | `any` | `[]` | no |
+| network | A reference to the network to which this router belongs | `string` | n/a | yes |
+| project | The project ID to deploy to | `string` | n/a | yes |
+| region | Region where the router resides | `string` | n/a | yes |
 
 ## Outputs
 
@@ -49,7 +49,7 @@ These sections describe requirements for using this module.
 
 The following dependencies must be available:
 
-- [Terraform][terraform] v0.12
+- [Terraform][terraform] v0.12 and above
 - [Terraform Provider for GCP][terraform-provider-gcp] plugin v2.0
 
 ### Service Account

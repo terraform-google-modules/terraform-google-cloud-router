@@ -15,29 +15,28 @@
 ---
 driver:
   name: terraform
+  verify_version: false
 
 provisioner:
   name: terraform
 
-verifier:
-  name: terraform
-
 platforms:
-  - name: default
+  - name: local
 
 suites:
-  - name: simple_example
+  - name: "simple_example"
     driver:
+      name: terraform
       root_module_directory: test/fixtures/simple_example/
     verifier:
-      color: false
+      name: terraform
+      color: true
       systems:
-        - name: simple_example local
+        - name: local
           backend: local
           controls:
             - gcloud
-            - gsutil
-        - name: simple_example gcp
+        - name: inspec-gcp
           backend: gcp
           controls:
             - gcp

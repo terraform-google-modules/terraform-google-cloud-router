@@ -12,10 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+project_id = attribute("project_id")
+region = attribute("region")
+cloud_router_name = attribute("cloud_router_name")
+
 control "gcp" do
   title "GCP Resources"
 
-  describe google_storage_bucket(name: attribute("bucket_name")) do
+  describe google_compute_router(project: project_id, region: region, name: cloud_router_name) do
     it { should exist }
+    its("name") { should eq cloud_router_name }
+    its("region") { should match /\/#{region}$/ }
+  end
+
+  describe google_compute_router(project: project_id, region: region, name: "dupe") do
+    it { should_not exist }
   end
 end

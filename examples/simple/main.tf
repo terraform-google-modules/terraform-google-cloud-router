@@ -21,8 +21,8 @@ provider "google" {
 module "cloud_router" {
   source = "../../"
 
-  name    = "example-router"
-  project = "example-project"
-  network = "default"
+  name    = "test-router"
+  project = var.project
+  network = var.network
   region  = "us-central1"
 }

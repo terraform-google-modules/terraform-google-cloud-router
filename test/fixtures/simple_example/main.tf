@@ -25,8 +25,18 @@ resource "random_pet" "main" {
 }
 
 module "example" {
-  source = "../../../examples/simple_example"
+  source = "../../../examples/simple"
 
-  project_id  = var.project_id
-  bucket_name = random_pet.main.id
+  project = var.project_id
+  network = module.vpc.network_name
+}
+
+module "vpc" {
+  source  = "terraform-google-modules/network/google"
+  version = "~> 2.5"
+
+  project_id   = var.project_id
+  network_name = "test-network"
+  routing_mode = "GLOBAL"
+  subnets      = []
 }

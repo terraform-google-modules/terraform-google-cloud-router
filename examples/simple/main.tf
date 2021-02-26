@@ -23,12 +23,16 @@ module "cloud_router" {
   source  = "terraform-google-modules/cloud-router/google"
   version = "~> 0.4"
 
-  name   = "test-router"
+  name   = "my-router"
   region = "us-central1"
+
+  bgp = {
+    asn = "64512"
+  }
 
   # project = "my-project-id"
   project = var.project
-  # network = "default"
+  # network = "my-network"
   network = var.network
 }
 # [END cloudrouter_create]

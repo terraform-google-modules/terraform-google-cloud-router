@@ -27,7 +27,9 @@ module "cloud_router" {
   region = "us-central1"
 
   bgp = {
-    asn = "64512"
+    # The private ASN (64512 - 65534, 4200000000 - 4294967294) can be any private ASN
+    # not already used as a peer ASN in the same region and network.
+    asn = "65001"
   }
 
   # project = "my-project-id"

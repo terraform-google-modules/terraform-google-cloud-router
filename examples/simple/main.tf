@@ -18,11 +18,17 @@ provider "google" {
   version = "~> 3.0"
 }
 
+# [START cloudrouter_create]
 module "cloud_router" {
-  source = "../../"
+  source  = "terraform-google-modules/cloud-router/google"
+  version = "~> 0.4"
 
-  name    = "test-router"
+  name   = "test-router"
+  region = "us-central1"
+
+  # project = "my-project-id"
   project = var.project
+  # network = "default"
   network = var.network
-  region  = "us-central1"
 }
+# [END cloudrouter_create]

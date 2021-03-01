@@ -18,11 +18,23 @@ provider "google" {
   version = "~> 3.0"
 }
 
+# [START cloudrouter_create]
 module "cloud_router" {
-  source = "../../"
+  source  = "terraform-google-modules/cloud-router/google"
+  version = "~> 0.4"
 
-  name    = "test-router"
+  name   = "my-router"
+  region = "us-central1"
+
+  bgp = {
+    # The private ASN (64512 - 65534, 4200000000 - 4294967294) can be any private ASN
+    # not already used as a peer ASN in the same region and network.
+    asn = "65001"
+  }
+
+  # project = "my-project-id"
   project = var.project
+  # network = "my-network"
   network = var.network
-  region  = "us-central1"
 }
+# [END cloudrouter_create]

@@ -1,5 +1,6 @@
+
 /**
- * Copyright 2019 Google LLC
+ * Copyright 2021 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +15,17 @@
  * limitations under the License.
  */
 
-module "project" {
-  source  = "terraform-google-modules/project-factory/google"
-  version = "~> 10.2"
+terraform {
+  required_version = ">= 0.13"
+  required_providers {
 
-  name              = "ci-cloud-router"
-  random_project_id = "true"
-  org_id            = var.org_id
-  folder_id         = var.folder_id
-  billing_account   = var.billing_account
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 3.53"
+    }
+  }
 
-  activate_apis = [
-    "cloudresourcemanager.googleapis.com",
-    "serviceusage.googleapis.com",
-    "compute.googleapis.com"
-  ]
+  provider_meta "google" {
+    module_name = "blueprints/terraform/terraform-google-cloud-router:interconnect_attachment/v1.0.0"
+  }
 }

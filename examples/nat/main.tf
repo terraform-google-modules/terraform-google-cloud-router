@@ -19,8 +19,8 @@ provider "google" {
 }
 
 module "cloud_router" {
-  source = "terraform-google-modules/cloud-router/google"
-
+  source  = "terraform-google-modules/cloud-router/google"
+  version = "~> 0.4"
   project = var.project_id # Replace this with your project ID in quotes
   name    = "my-cloud-router"
   network = "default"

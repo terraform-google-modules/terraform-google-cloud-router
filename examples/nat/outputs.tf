@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,12 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 3.0"
+output "router_name" {
+  value       = module.cloud_router.router.name
+  description = "The name of the created router"
 }
 
-module "cloud_router" {
-  source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 0.4"
-  project = var.project_id # Replace this with your project ID in quotes
-  name    = "my-cloud-router"
-  network = "default"
-  region  = "us-central1"
-
-  nats = [{
-    name = "my-nat-gateway"
-  }]
+output "router_region" {
+  value       = module.cloud_router.router.region
+  description = "The region of the created router"
 }

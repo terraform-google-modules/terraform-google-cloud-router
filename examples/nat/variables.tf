@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,6 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 3.0"
-}
-
-module "cloud_router" {
-  source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 0.4"
-  project = var.project_id # Replace this with your project ID in quotes
-  name    = "my-cloud-router"
-  network = "default"
-  region  = "us-central1"
-
-  nats = [{
-    name = "my-nat-gateway"
-  }]
+variable "project_id" {
+  description = "The project ID to host the Cloud Router in"
 }

@@ -18,6 +18,7 @@ provider "google" {
   version = "~> 3.0"
 }
 
+# [START cloudnat_simple_create]
 module "cloud_router" {
   source  = "terraform-google-modules/cloud-router/google"
   version = "~> 0.4"
@@ -30,3 +31,4 @@ module "cloud_router" {
     name = "my-nat-gateway"
   }]
 }
+# [END cloudnat_simple_create]

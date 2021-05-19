@@ -24,6 +24,7 @@ resource "google_compute_interconnect_attachment" "attachment" {
   type              = var.type
   description       = var.description
   bandwidth         = var.bandwidth
+  mtu               = var.mtu
   candidate_subnets = var.candidate_subnets
   vlan_tag8021q     = var.vlan_tag8021q
 }

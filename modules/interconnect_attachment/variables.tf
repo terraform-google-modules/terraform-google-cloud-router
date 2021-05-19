@@ -57,6 +57,12 @@ variable "bandwidth" {
   default     = "BPS_10G"
 }
 
+variable "mtu" {
+  type        = string
+  description = "Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440."
+  default     = null
+}
+
 variable "description" {
   type        = string
   description = "An optional description of this resource"

@@ -9,6 +9,7 @@
 | description | An optional description of this resource | `string` | `null` | no |
 | interconnect | URL of the underlying Interconnect object that this attachment's traffic will traverse through. | `string` | n/a | yes |
 | interface | Interface to deploy for this attachment. | `any` | n/a | yes |
+| mtu | Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440. | `string` | `null` | no |
 | name | The name of the interconnect attachment | `string` | n/a | yes |
 | peer | BGP Peer for this attachment. | `any` | n/a | yes |
 | project | The project ID to deploy to | `string` | n/a | yes |

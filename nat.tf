@@ -33,6 +33,7 @@ resource "google_compute_router_nat" "nats" {
   icmp_idle_timeout_sec            = lookup(each.value, "icmp_idle_timeout_sec", 30)
   tcp_established_idle_timeout_sec = lookup(each.value, "tcp_established_idle_timeout_sec", 1200)
   tcp_transitory_idle_timeout_sec  = lookup(each.value, "tcp_transitory_idle_timeout_sec", 30)
+  enable_endpoint_independent_mapping = lookup(each.value, "enable_endpoint_independent_mapping", true)
 
   log_config {
     enable = true

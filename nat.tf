@@ -27,12 +27,13 @@ resource "google_compute_router_nat" "nats" {
   nat_ip_allocate_option             = lookup(each.value, "nat_ip_allocate_option", length(lookup(each.value, "nat_ips", [])) > 0 ? "MANUAL_ONLY" : "AUTO_ONLY")
   source_subnetwork_ip_ranges_to_nat = lookup(each.value, "source_subnetwork_ip_ranges_to_nat", "ALL_SUBNETWORKS_ALL_IP_RANGES")
 
-  nat_ips                          = lookup(each.value, "nat_ips", [])
-  min_ports_per_vm                 = lookup(each.value, "min_ports_per_vm", 0)
-  udp_idle_timeout_sec             = lookup(each.value, "udp_idle_timeout_sec", 30)
-  icmp_idle_timeout_sec            = lookup(each.value, "icmp_idle_timeout_sec", 30)
-  tcp_established_idle_timeout_sec = lookup(each.value, "tcp_established_idle_timeout_sec", 1200)
-  tcp_transitory_idle_timeout_sec  = lookup(each.value, "tcp_transitory_idle_timeout_sec", 30)
+  nat_ips                             = lookup(each.value, "nat_ips", [])
+  min_ports_per_vm                    = lookup(each.value, "min_ports_per_vm", 0)
+  udp_idle_timeout_sec                = lookup(each.value, "udp_idle_timeout_sec", 30)
+  icmp_idle_timeout_sec               = lookup(each.value, "icmp_idle_timeout_sec", 30)
+  tcp_established_idle_timeout_sec    = lookup(each.value, "tcp_established_idle_timeout_sec", 1200)
+  tcp_transitory_idle_timeout_sec     = lookup(each.value, "tcp_transitory_idle_timeout_sec", 30)
+  enable_endpoint_independent_mapping = lookup(each.value, "enable_endpoint_independent_mapping", true)
 
   log_config {
     enable = true

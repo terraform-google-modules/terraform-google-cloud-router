@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0](https://www.github.com/terraform-google-modules/terraform-google-cloud-router/compare/v1.1.0...v1.2.0) (2021-07-15)
+
+
+### Features
+
+* add Description field to cloud router ([#32](https://www.github.com/terraform-google-modules/terraform-google-cloud-router/issues/32)) ([28b3006](https://www.github.com/terraform-google-modules/terraform-google-cloud-router/commit/28b3006a6cff02eb40848be5c8ac34fe52a52258))
+
 ## [1.1.0](https://www.github.com/terraform-google-modules/terraform-google-cloud-router/compare/v1.0.0...v1.1.0) (2021-06-01)
 
 

@@ -27,6 +27,7 @@ Functional examples are included in the
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | bgp | BGP information specific to this router. | `any` | `null` | no |
+| description | An optional description of this resource | `string` | `null` | no |
 | name | Name of the router | `string` | n/a | yes |
 | nats | NATs to deploy on this router. | `any` | `[]` | no |
 | network | A reference to the network to which this router belongs | `string` | n/a | yes |

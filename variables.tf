@@ -34,6 +34,12 @@ variable "region" {
   description = "Region where the router resides"
 }
 
+variable "description" {
+  type        = string
+  description = "An optional description of this resource"
+  default     = null
+}
+
 # TODO(https://github.com/hashicorp/terraform/issues/19898): Convert these
 # to objects once optional variables are supported.
 

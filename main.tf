@@ -15,10 +15,11 @@
  */
 
 resource "google_compute_router" "router" {
-  name    = var.name
-  network = var.network
-  region  = var.region
-  project = var.project
+  name        = var.name
+  network     = var.network
+  region      = var.region
+  project     = var.project
+  description = var.description
   dynamic "bgp" {
     for_each = var.bgp != null ? [var.bgp] : []
     content {

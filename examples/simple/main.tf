@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 3.0"
-}
-
 # [START cloudrouter_create]
 module "cloud_router" {
   source  = "terraform-google-modules/cloud-router/google"

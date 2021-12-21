@@ -18,14 +18,6 @@ variable "project_id" {
   description = "The project ID to host the Cloud Router in"
 }
 
-variable "region" {
-  type = string
-  description = "The region"
-}
-variable "network" {
-  type = string
-  description = "The Custom VPC network"
-}
 variable "min_ports_per_vm" {
   type = string
   default = "10000"

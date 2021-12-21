@@ -20,13 +20,17 @@ variable "project_id" {
 
 variable "region" {
   type = string
+  description = "The region"
 }
 variable "network" {
   type = string
+  description = "The Custom VPC network"
 }
 variable "min_ports_per_vm" {
   type = string
+  default = "10000"
 }
 variable "max_ports_per_vm" {
   type = string
+  default = "63000"
 }

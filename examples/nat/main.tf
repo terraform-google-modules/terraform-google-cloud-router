@@ -24,7 +24,7 @@ module "cloud_router" {
   region  = "us-central1"
 
   nats = [{
-    name = "my-nat-gateway"
+    name                                = "my-nat-gateway"
     enable_endpoint_independent_mapping = true,
     high_availability                   = true,
     icmp_idle_timeout_sec               = 30,

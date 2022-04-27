@@ -50,6 +50,7 @@ variable "description" {
 # - advertised_ip_ranges (list(object), optional): User-specified list of individual IP ranges to advertise.
 #   - range (string, required): The IP range to advertise.
 #   - description (string, optional): User-specified description for the IP range.
+# - keepalive_interval (integer, optional): Period of time in seconds to wait before sending a new BGP keepalive message to the peer.
 variable "bgp" {
   description = "BGP information specific to this router."
   type        = any

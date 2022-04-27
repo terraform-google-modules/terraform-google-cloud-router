@@ -29,8 +29,9 @@ resource "google_compute_router" "router" {
       # This forces the config to explicitly state what subnets and ip ranges
       # to advertise. To advertise the same range as DEFAULT, set
       # `advertise_groups = ["ALL_SUBNETS"]`.
-      advertise_mode    = "CUSTOM"
-      advertised_groups = lookup(var.bgp, "advertised_groups", null)
+      advertise_mode     = "CUSTOM"
+      advertised_groups  = lookup(var.bgp, "advertised_groups", null)
+      keepalive_interval = lookup(var.bgp, "keepalive_interval", null)
 
       dynamic "advertised_ip_ranges" {
         for_each = lookup(var.bgp, "advertised_ip_ranges", [])

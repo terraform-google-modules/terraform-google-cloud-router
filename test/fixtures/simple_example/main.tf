@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-provider "random" {
-  version = "~> 2.0"
-}
-
 resource "random_pet" "main" {
   length    = 1
   prefix    = "simple-example"

@@ -7,6 +7,23 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v1.3.0...v2.0.0) (2022-05-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* use provider default values when specific settings omitted (#43)
+* add support for BGP keepalive_interval (#42)
+
+### Features
+
+* add support for BGP keepalive_interval ([#42](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/42)) ([380d763](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/380d7632a6a28ab6277f47c4eada3293102a7788))
+
+
+### Bug Fixes
+
+* use provider default values when specific settings omitted ([#43](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/43)) ([5b4f46f](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/5b4f46f9d2280426bdce9d8ec1a35268de2ba5ca))
+
 ## [1.3.0](https://www.github.com/terraform-google-modules/terraform-google-cloud-router/compare/v1.2.0...v1.3.0) (2021-11-18)
 
 

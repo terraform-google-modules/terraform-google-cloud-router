@@ -34,7 +34,7 @@ resource "google_compute_router_nat" "nats" {
   tcp_established_idle_timeout_sec    = lookup(each.value, "tcp_established_idle_timeout_sec", null)
   tcp_transitory_idle_timeout_sec     = lookup(each.value, "tcp_transitory_idle_timeout_sec", null)
   enable_endpoint_independent_mapping = lookup(each.value, "enable_endpoint_independent_mapping", null)
-  enable_dynamic_port_allocation      = lookup(each.value, "enable_dynamic_port_allocation", null) 
+  enable_dynamic_port_allocation      = lookup(each.value, "enable_dynamic_port_allocation", null)
 
   log_config {
     enable = true

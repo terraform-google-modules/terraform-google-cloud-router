@@ -29,6 +29,7 @@ resource "google_compute_router_nat" "nats" {
 
   nat_ips                             = lookup(each.value, "nat_ips", null)
   min_ports_per_vm                    = lookup(each.value, "min_ports_per_vm", null)
+  max_ports_per_vm                    = lookup(each.value, "max_ports_per_vm", null)
   udp_idle_timeout_sec                = lookup(each.value, "udp_idle_timeout_sec", null)
   icmp_idle_timeout_sec               = lookup(each.value, "icmp_idle_timeout_sec", null)
   tcp_established_idle_timeout_sec    = lookup(each.value, "tcp_established_idle_timeout_sec", null)

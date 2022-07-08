@@ -63,6 +63,7 @@ variable "bgp" {
 # - source_subnetwork_ip_ranges_to_nat (string, optional): How NAT should be configured per Subnetwork. Defaults to ALL_SUBNETWORKS_ALL_IP_RANGES.
 # - nat_ips (list(number), optional): Self-links of NAT IPs.
 # - min_ports_per_vm (number, optional): Minimum number of ports allocated to a VM from this NAT.
+# - max_ports_per_vm (number, optional): Maximum number of ports allocated to a VM from this NAT. This field can only be set when enableDynamicPortAllocation is enabled.
 # - udp_idle_timeout_sec (number, optional): Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
 # - icmp_idle_timeout_sec (number, optional): Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 # - tcp_established_idle_timeout_sec (number, optional): Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.

@@ -12,7 +12,7 @@ and this project adheres to
 
 ### ⚠ BREAKING CHANGES
 
-* Implemented dynamic port allocation support (#46)
+* Increased Google Provider minimum version to 4.27
 
 ### Features
 

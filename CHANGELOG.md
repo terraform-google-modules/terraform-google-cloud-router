@@ -12,7 +12,7 @@ and this project adheres to
 
 ### ⚠ BREAKING CHANGES
 
-* Increased Google Provider minimum version to 4.27
+* Increased Google Provider minimum version to 4.27 (#46)
 
 ### Features
 

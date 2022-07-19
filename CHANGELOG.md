@@ -7,6 +7,18 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v2.0.0...v3.0.0) (2022-07-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Increased Google Provider minimum version to 4.27 (#48)
+
+### Features
+
+* Implemented dynamic port allocation support ([#46](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/46)) ([345ddb5](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/345ddb533b55a8da85fc7c94b4b18d30d6ffa5d2))
+* support max_ports_per_vm in NAT config ([#48](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/48)) ([270fe4f](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/270fe4f29916004b81734b82a76736e6cecfc1a5))
+
 ## [2.0.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v1.3.0...v2.0.0) (2022-05-24)
 
 

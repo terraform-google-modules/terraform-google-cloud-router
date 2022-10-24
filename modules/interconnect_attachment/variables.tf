@@ -94,6 +94,11 @@ variable "interface" {
 # Type: object, with fields:
 # - peer_asn (string, required): Peer BGP Autonomous System Number (ASN).
 # - advertised_route_priority (number, optional): The priority of routes advertised to this BGP peer.
+# - bfd (object, optional): BFD Session configuration for this beer. BFD Block supports:
+#   - session_initialization_mode (string, required): he BFD session initialization mode for this BGP peer.
+#   - min_transmit_interval (num, optional):  The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router.
+#   - min_receive_interval (num, optional): The minimum interval, in milliseconds, between BFD control packets received from the peer router.
+#   - multiplier (num, optional): The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable.
 variable "peer" {
   description = "BGP Peer for this attachment."
   type        = any

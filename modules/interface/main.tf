@@ -38,4 +38,14 @@ resource "google_compute_router_peer" "peers" {
   peer_ip_address           = each.value.peer_ip_address
   peer_asn                  = each.value.peer_asn
   advertised_route_priority = lookup(each.value, "advertised_route_priority", null)
+
+  dynamic "bfd" {
+    for_each = lookup(each.value, "bfd", null) == null ? [] : [""]
+    content {
+      session_initialization_mode = try(each.value.bfd.session_initialization_mode, null)
+      min_receive_interval        = try(each.value.bfd.min_receive_interval, null)
+      min_transmit_interval       = try(each.value.bfd.min_transmit_interval, null)
+      multiplier                  = try(each.value.bfd.multiplier, null)
+    }
+  }
 }

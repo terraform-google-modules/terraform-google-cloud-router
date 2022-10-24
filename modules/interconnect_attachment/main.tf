@@ -44,5 +44,6 @@ module "interface" {
     peer_ip_address           = element(split("/", google_compute_interconnect_attachment.attachment.customer_router_ip_address), 0)
     peer_asn                  = var.peer.peer_asn
     advertised_route_priority = lookup(var.peer, "advertised_route_priority", null)
+    bfd                       = lookup(var.peer, "bfd", null)
   }]
 }

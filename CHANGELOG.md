@@ -7,6 +7,17 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v3.0.0...v4.0.0) (2022-11-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Add BFD support for interconnect attachments.  (#51)
+
+### Features
+
+* Add BFD support for interconnect attachments.  ([#51](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/51)) ([c5c5704](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/c5c57040fbadb2430c1442a2a0f540a2e8136f1e))
+
 ## [3.0.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v2.0.0...v3.0.0) (2022-07-08)
 
 

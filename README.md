@@ -9,7 +9,7 @@ Basic usage of this module is as follows:
 ```hcl
 module "cloud_router" {
   source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 0.4"
+  version = "~> 4.0"
 
   name    = "example-router"
   project = "<PROJECT ID>"

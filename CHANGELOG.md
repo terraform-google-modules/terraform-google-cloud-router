@@ -14,6 +14,8 @@ and this project adheres to
 
 * Add BFD support for interconnect attachments.  (#51)
 
+* `interconnect_attachment` submodule increased Google Provider minimum version to 4.27 (#51)
+
 ### Features
 
 * Add BFD support for interconnect attachments.  ([#51](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/51)) ([c5c5704](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/c5c57040fbadb2430c1442a2a0f540a2e8136f1e))

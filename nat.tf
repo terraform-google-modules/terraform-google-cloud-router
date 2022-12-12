@@ -38,7 +38,7 @@ resource "google_compute_router_nat" "nats" {
   enable_dynamic_port_allocation      = lookup(each.value, "enable_dynamic_port_allocation", null)
 
   log_config {
-    enable = true
+    enable = lookup(lookup(each.value, "log_config", {}), "enable", true)
     filter = lookup(lookup(each.value, "log_config", {}), "filter", "ALL")
   }
 

@@ -7,6 +7,17 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v4.0.0...v5.0.0) (2023-03-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **TPG >=4.51:** add support for NAT tcp wait timeout ([#64](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/64))
+
+### Features
+
+* **TPG >=4.51:** add support for NAT tcp wait timeout ([#64](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/64)) ([fdd1250](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/fdd1250ba39f4dc7ed15d3c862276972c6a6fed7))
+
 ## [4.0.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v3.0.0...v4.0.0) (2022-11-08)
 
 

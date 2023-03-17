@@ -16,8 +16,7 @@
 
 # [START cloudrouter_create]
 module "cloud_router" {
-  source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 4.0"
+  source  = "../../"
 
   name   = "my-router"
   region = "us-central1"

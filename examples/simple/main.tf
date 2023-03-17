@@ -16,7 +16,7 @@
 
 # [START cloudrouter_create]
 module "cloud_router" {
-  source  = "../../"
+  source = "../../"
 
   name   = "my-router"
   region = "us-central1"

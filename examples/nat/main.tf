@@ -17,7 +17,7 @@
 # [START cloudnat_simple_create]
 module "cloud_router" {
   source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 4.0"
+  version = "~> 5.0"
   project = var.project_id # Replace this with your project ID in quotes
   name    = "my-cloud-router"
   network = "default"

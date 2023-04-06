@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.1](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v5.0.0...v5.0.1) (2023-04-06)
+
+
+### Bug Fixes
+
+* **deps:** update for tflint and cft/developer-tools v1.10 ([#66](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/66)) ([e9b4e18](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/e9b4e1807bd5dbc7ac1061711bf9d9d16427c751))
+
 ## [5.0.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v4.0.0...v5.0.0) (2023-03-07)
 
 

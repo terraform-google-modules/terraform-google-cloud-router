@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.1.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v5.0.1...v5.1.0) (2023-07-10)
+
+
+### Features
+
+* Allow cloud nat logging to be disabled completely ([#76](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/76)) ([7e49b67](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/7e49b67043c164be501ef7077674cd964019bce6))
+
 ## [5.0.1](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v5.0.0...v5.0.1) (2023-04-06)
 
 

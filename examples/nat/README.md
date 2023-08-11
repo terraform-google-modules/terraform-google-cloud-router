@@ -8,12 +8,13 @@ inside of a project.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| project\_id | The project ID to host the Cloud Router in | `any` | n/a | yes |
+| project\_id | The GCP project ID | `string` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
+| project\_id | Project ID of the router |
 | router\_name | The name of the created router |
 | router\_region | The region of the created router |
 

@@ -14,10 +14,20 @@
  * limitations under the License.
  */
 
+module "vpc" {
+  source  = "terraform-google-modules/network/google"
+  version = "~> 7.0"
+
+  project_id   = var.project_id
+  network_name = "test-network"
+  routing_mode = "GLOBAL"
+  subnets      = []
+}
+
+
 # [START cloudrouter_create]
 module "cloud_router" {
-  source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 5.0"
+  source = "../.."
 
   name   = "my-router"
   region = "us-central1"
@@ -28,9 +38,7 @@ module "cloud_router" {
     asn = "65001"
   }
 
-  # project = "my-project-id"
-  project = var.project
-  # network = "my-network"
-  network = var.network
+  project = var.project_id
+  network = module.vpc.network_name
 }
 # [END cloudrouter_create]

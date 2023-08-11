@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2021 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,25 +14,12 @@
  * limitations under the License.
  */
 
-resource "random_pet" "main" {
-  length    = 1
-  prefix    = "simple-example"
-  separator = "-"
-}
-
-module "example" {
-  source = "../../../examples/simple"
-
-  project = var.project_id
-  network = module.vpc.network_name
-}
-
-module "vpc" {
-  source  = "terraform-google-modules/network/google"
-  version = "~> 7.0"
-
-  project_id   = var.project_id
-  network_name = "test-network"
-  routing_mode = "GLOBAL"
-  subnets      = []
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 4.0"
+    }
+  }
+  required_version = ">= 1.3"
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,8 @@
  * limitations under the License.
  */
 
-output "project_id" {
-  description = "The ID of the project in which resources are provisioned."
-  value       = var.project_id
-}
 
-output "cloud_router_name" {
-  description = "The name of the cloud router"
-  value       = module.example.router_name
-}
-
-output "region" {
-  description = "The region of the cloud router"
-  value       = module.example.router_region
+variable "project_id" {
+  type        = string
+  description = "The GCP project ID"
 }

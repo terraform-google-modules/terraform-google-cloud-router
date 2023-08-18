@@ -12,10 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package primary_instance_adb_cluster
+package nat_test
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/GoogleCloudPlatform/cloud-foundation-toolkit/infra/blueprint-test/pkg/gcloud"
@@ -32,9 +31,8 @@ func TestNat(t *testing.T) {
 		// Router Information
 		routerName := nat.GetStringOutput("router_name")
 		routerRegion := nat.GetStringOutput("router_region")
-		fmt.Printf("%s, %s, %s", projectId, routerName, routerRegion)
 
-		getRouterName := gcloud.Run(t, fmt.Sprintf("compute routers describe %s  --project %s  --region %s ", routerName, projectId, routerRegion))
+		getRouterName := gcloud.Runf(t,"compute routers describe %s  --project %s  --region %s ", routerName, projectId, routerRegion)
 
 		// check for Cluster
 		assert.Equal(routerName, getRouterName.Get("name").String(), "Router name matches")

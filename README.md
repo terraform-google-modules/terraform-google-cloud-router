@@ -54,8 +54,8 @@ Functional examples are included in the [examples](./examples/) directory. By de
 
 | Name | Description |
 |------|-------------|
-| nat | The created router |
-| router | The created router |
+| nat | Created NATs |
+| router | Created Router |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

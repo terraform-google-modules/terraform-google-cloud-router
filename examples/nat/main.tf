@@ -27,7 +27,8 @@ module "vpc" {
 
 # [START cloudnat_simple_create]
 module "cloud_router" {
-  source  = "../.."
+  source  = "terraform-google-modules/cloud-router/google"
+  version = "~> 5.0"
   name    = "my-cloud-router"
   project = var.project_id
   network = module.vpc.network_name

@@ -20,6 +20,7 @@ resource "google_compute_router" "router" {
   region      = var.region
   project     = var.project
   description = var.description
+
   dynamic "bgp" {
     for_each = var.bgp != null ? [var.bgp] : []
     content {
@@ -42,4 +43,5 @@ resource "google_compute_router" "router" {
       }
     }
   }
+
 }

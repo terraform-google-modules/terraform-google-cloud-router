@@ -40,10 +40,6 @@ variable "description" {
   default     = null
 }
 
-# TODO(https://github.com/hashicorp/terraform/issues/19898): Convert these
-# to objects once optional variables are supported.
-
-
 # Type: object, with fields:
 # - asn (string, required): Local BGP Autonomous System Number (ASN).
 # - advertised_groups (list(string), optional): User-specified list of prefix groups to advertise.
@@ -53,8 +49,17 @@ variable "description" {
 # - keepalive_interval (integer, optional): Period of time in seconds to wait before sending a new BGP keepalive message to the peer.
 variable "bgp" {
   description = "BGP information specific to this router."
-  type        = any
-  default     = null
+  type = object({
+    asn               = string
+    advertise_mode    = optional(string, "CUSTOM")
+    advertised_groups = optional(list(string))
+    advertised_ip_ranges = optional(list(object({
+      range       = string
+      description = optional(string)
+    })), [])
+    keepalive_interval = optional(number)
+  })
+  default = null
 }
 
 # Type: list(object), with fields:
@@ -77,6 +82,32 @@ variable "bgp" {
 #   - secondary_ip_range_names (string, optional): List of the secondary ranges of the subnetwork that are allowed to use NAT.
 variable "nats" {
   description = "NATs to deploy on this router."
-  type        = any
-  default     = []
+  type = list(object({
+    name                                = string
+    nat_ip_allocate_option              = optional(string)
+    source_subnetwork_ip_ranges_to_nat  = optional(string)
+    nat_ips                             = optional(list(string), [])
+    min_ports_per_vm                    = optional(number)
+    max_ports_per_vm                    = optional(number)
+    udp_idle_timeout_sec                = optional(number)
+    icmp_idle_timeout_sec               = optional(number)
+    tcp_established_idle_timeout_sec    = optional(number)
+    tcp_transitory_idle_timeout_sec     = optional(number)
+    tcp_time_wait_timeout_sec           = optional(number)
+    enable_endpoint_independent_mapping = optional(bool)
+    enable_dynamic_port_allocation      = optional(bool)
+
+    log_config = optional(object({
+      enable = optional(bool, true)
+      filter = optional(string, "ALL")
+    }), {})
+
+    subnetworks = optional(list(object({
+      name                     = string
+      source_ip_ranges_to_nat  = string
+      secondary_ip_range_names = optional(string)
+    })), [])
+
+  }))
+  default = []
 }

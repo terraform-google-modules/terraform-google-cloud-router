@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2021 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,12 @@
  * limitations under the License.
  */
 
-# [START cloudrouter_create]
-module "cloud_router" {
-  source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 5.0"
-
-  name   = "my-router"
-  region = "us-central1"
-
-  bgp = {
-    # The ASN (16550, 64512 - 65534, 4200000000 - 4294967294) can be any private ASN
-    # not already used as a peer ASN in the same region and network or 16550 for Partner Interconnect.
-    asn = "65001"
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 4.0"
+    }
   }
-
-  # project = "my-project-id"
-  project = var.project
-  # network = "my-network"
-  network = var.network
+  required_version = ">= 1.3"
 }
-# [END cloudrouter_create]

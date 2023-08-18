@@ -14,13 +14,24 @@
  * limitations under the License.
  */
 
+module "vpc" {
+  source  = "terraform-google-modules/network/google"
+  version = "~> 7.0"
+
+  project_id   = var.project_id
+  network_name = "test-network"
+  routing_mode = "GLOBAL"
+  subnets      = []
+}
+
+
 # [START cloudnat_simple_create]
 module "cloud_router" {
   source  = "terraform-google-modules/cloud-router/google"
   version = "~> 5.0"
-  project = var.project_id # Replace this with your project ID in quotes
   name    = "my-cloud-router"
-  network = "default"
+  project = var.project_id
+  network = module.vpc.network_name
   region  = "us-central1"
 
   nats = [{

@@ -7,6 +7,17 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.0.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v5.1.0...v6.0.0) (2023-08-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **TF>1.3:** Min terraform version 1.3. Changed variables type object with optional parameters ([#79](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/79))
+
+### Features
+
+* **TF>1.3:** Min terraform version 1.3. Changed variables type object with optional parameters ([#79](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/79)) ([adcf807](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/adcf8079a273da166d0c06d421aefc2ae4be9c06))
+
 ## [5.1.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v5.0.1...v5.1.0) (2023-07-10)
 
 

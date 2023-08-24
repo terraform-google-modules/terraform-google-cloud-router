@@ -104,8 +104,8 @@ variable "nats" {
 
     subnetworks = optional(list(object({
       name                     = string
-      source_ip_ranges_to_nat  = string
-      secondary_ip_range_names = optional(string)
+      source_ip_ranges_to_nat  = list(string)
+      secondary_ip_range_names = optional(list(string))
     })), [])
 
   }))

@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.0.1](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v6.0.0...v6.0.1) (2023-08-31)
+
+
+### Bug Fixes
+
+* Fix type for NAT subnetwork attributes ([#85](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/85)) ([1498a8c](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/1498a8cc6b5e1cda592398a7103e8d795887f6c3))
+
 ## [6.0.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v5.1.0...v6.0.0) (2023-08-23)
 
 

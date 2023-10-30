@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.0.2](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v6.0.1...v6.0.2) (2023-10-20)
+
+
+### Bug Fixes
+
+* upgraded versions.tf to include minor bumps from tpg v5 ([#92](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/92)) ([87f489d](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/87f489d35b7411145a33088c7c6b4b8df6982028))
+
 ## [6.0.1](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v6.0.0...v6.0.1) (2023-08-31)
 
 

@@ -28,7 +28,7 @@ module "vpc" {
 # [START cloudrouter_create]
 module "cloud_router" {
   source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 5.0"
+  version = "~> 6.0"
 
   name   = "my-router"
   region = "us-central1"

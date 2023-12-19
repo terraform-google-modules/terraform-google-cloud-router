@@ -15,7 +15,8 @@
  */
 
 module "cloud_router" {
-  source = "../../"
+  source  = "terraform-google-modules/cloud-router/google"
+  version = "~> 6.0"
 
   name    = "example-router"
   project = "example-project"
@@ -29,7 +30,9 @@ module "cloud_router" {
 }
 
 module "interconnect_attachment" {
-  source  = "../../modules/interconnect_attachment"
+  source  = "terraform-google-modules/cloud-router/google//modules/interconnect_attachment"
+  version = "~> 6.0"
+
   name    = "example-attachment"
   project = "example-project"
   region  = "us-central1"

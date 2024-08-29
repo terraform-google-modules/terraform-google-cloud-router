@@ -23,7 +23,7 @@ spec:
     source:
       repo: https://github.com/terraform-google-modules/terraform-google-cloud-router.git
       sourceType: git
-    version: 6.0.2
+    version: 6.1.0
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"

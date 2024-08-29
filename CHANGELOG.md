@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.1.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v6.0.2...v6.1.0) (2024-08-29)
+
+
+### Features
+
+* **deps:** Update Terraform Google Provider to v6 (major) ([#129](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/129)) ([a4da4f0](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/a4da4f06fbae664e8e6ac8d060d785defac964ae))
+
 ## [6.0.2](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v6.0.1...v6.0.2) (2023-10-20)
 
 

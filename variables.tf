@@ -67,6 +67,7 @@ variable "bgp" {
 # - nat_ip_allocate_option (string, optional): How external IPs should be allocated for this NAT. Defaults to MANUAL_ONLY if nat_ips are set, else AUTO_ONLY.
 # - source_subnetwork_ip_ranges_to_nat (string, optional): How NAT should be configured per Subnetwork. Defaults to ALL_SUBNETWORKS_ALL_IP_RANGES.
 # - nat_ips (list(number), optional): Self-links of NAT IPs.
+# - drain_nat_ips (list(number), optional): Self-links of NAT IPs to be drained.
 # - min_ports_per_vm (number, optional): Minimum number of ports allocated to a VM from this NAT.
 # - max_ports_per_vm (number, optional): Maximum number of ports allocated to a VM from this NAT. This field can only be set when enableDynamicPortAllocation is enabled.
 # - udp_idle_timeout_sec (number, optional): Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
@@ -87,6 +88,7 @@ variable "nats" {
     nat_ip_allocate_option              = optional(string)
     source_subnetwork_ip_ranges_to_nat  = optional(string)
     nat_ips                             = optional(list(string), [])
+    drain_nat_ips                       = optional(list(string), [])
     min_ports_per_vm                    = optional(number)
     max_ports_per_vm                    = optional(number)
     udp_idle_timeout_sec                = optional(number)

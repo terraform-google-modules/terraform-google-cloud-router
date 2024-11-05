@@ -27,6 +27,7 @@ resource "google_compute_router_nat" "nats" {
   nat_ip_allocate_option              = coalesce(each.value.nat_ip_allocate_option, length(each.value.nat_ips) > 0 ? "MANUAL_ONLY" : "AUTO_ONLY")
   source_subnetwork_ip_ranges_to_nat  = coalesce(each.value.source_subnetwork_ip_ranges_to_nat, "ALL_SUBNETWORKS_ALL_IP_RANGES")
   nat_ips                             = each.value.nat_ips
+  drain_nat_ips                       = each.value.drain_nat_ips
   min_ports_per_vm                    = each.value.min_ports_per_vm
   max_ports_per_vm                    = each.value.max_ports_per_vm
   udp_idle_timeout_sec                = each.value.udp_idle_timeout_sec

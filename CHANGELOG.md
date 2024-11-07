@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.2.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v6.1.0...v6.2.0) (2024-11-05)
+
+
+### Features
+
+* add drain IPs option to NAT resource ([#135](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/135)) ([d8ec351](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/d8ec351bf5e0d6aef9127ff924fc48f3f7902f91))
+
 ## [6.1.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v6.0.2...v6.1.0) (2024-08-29)
 
 

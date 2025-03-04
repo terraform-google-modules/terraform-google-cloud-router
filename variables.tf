@@ -40,6 +40,12 @@ variable "description" {
   default     = null
 }
 
+variable "encrypted_interconnect_router" {
+  type        = bool
+  description = "An optional field to indicate if a router is dedicated to use with encrypted Interconnect Attachment"
+  default     = false
+}
+
 # Type: object, with fields:
 # - asn (string, required): Local BGP Autonomous System Number (ASN).
 # - advertised_groups (list(string), optional): User-specified list of prefix groups to advertise.

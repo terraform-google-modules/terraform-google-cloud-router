@@ -81,6 +81,18 @@ variable "vlan_tag8021q" {
   default     = null
 }
 
+variable "encryption" {
+  type        = string
+  description = "Indicates the user-supplied encryption option of this interconnect attachment."
+  default     = "NONE"
+}
+
+variable "ipsec_internal_addresses" {
+  type        = list(string)
+  description = "URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC."
+  default     = []
+}
+
 variable "interface" {
   description = "Interface to deploy for this attachment."
   type = object({

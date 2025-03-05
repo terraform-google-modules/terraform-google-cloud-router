@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.3.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v6.2.0...v6.3.0) (2025-03-05)
+
+
+### Features
+
+* add HA VPN over interconnect support ([#142](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/142)) ([2b4b255](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/2b4b2555e9bbab2f849fe8c633568a92f30a806b))
+
 ## [6.2.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v6.1.0...v6.2.0) (2024-11-05)
 
 

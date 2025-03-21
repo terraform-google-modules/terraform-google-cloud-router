@@ -32,6 +32,8 @@ resource "google_compute_interconnect_attachment" "attachment" {
 }
 
 module "interface" {
+  count = var.create_interface ? 1 : 0
+
   source                  = "../interface"
   name                    = var.interface.name
   project                 = var.project

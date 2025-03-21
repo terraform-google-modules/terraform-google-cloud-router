@@ -37,6 +37,7 @@ variable "region" {
 variable "interconnect" {
   type        = string
   description = "URL of the underlying Interconnect object that this attachment's traffic will traverse through."
+  default     = ""
 }
 
 variable "admin_enabled" {
@@ -93,11 +94,18 @@ variable "ipsec_internal_addresses" {
   default     = []
 }
 
+variable "create_interface" {
+  type        = bool
+  description = "Whether to create router interface (and peer) for this attachment. Set this to false for PARTNER type."
+  default     = true
+}
+
 variable "interface" {
   description = "Interface to deploy for this attachment."
   type = object({
     name = string
   })
+  default = null
 }
 
 variable "peer" {
@@ -113,4 +121,5 @@ variable "peer" {
       multiplier                  = optional(number)
     }))
   })
+  default = null
 }

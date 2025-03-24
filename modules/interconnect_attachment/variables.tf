@@ -64,6 +64,12 @@ variable "mtu" {
   default     = null
 }
 
+variable "edge_availability_domain" {
+  type        = string
+  description = "Desired availability domain for the attachment. Only available for type PARTNER, at creation time."
+  default     = null
+}
+
 variable "description" {
   type        = string
   description = "An optional description of this resource"

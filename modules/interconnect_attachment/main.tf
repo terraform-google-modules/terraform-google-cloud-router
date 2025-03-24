@@ -22,6 +22,7 @@ resource "google_compute_interconnect_attachment" "attachment" {
   interconnect             = var.interconnect
   admin_enabled            = var.admin_enabled
   type                     = var.type
+  edge_availability_domain = var.edge_availability_domain
   description              = var.description
   bandwidth                = var.bandwidth
   mtu                      = var.mtu

@@ -47,5 +47,6 @@ module "interface" {
     peer_asn                  = var.peer.peer_asn
     advertised_route_priority = lookup(var.peer, "advertised_route_priority", null)
     bfd                       = lookup(var.peer, "bfd", null)
+    md5_authentication_key    = lookup(var.peer, "md5_authentication_key", null)
   }]
 }

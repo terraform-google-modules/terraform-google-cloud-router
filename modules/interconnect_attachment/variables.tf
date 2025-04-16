@@ -112,5 +112,9 @@ variable "peer" {
       min_receive_interval        = optional(number)
       multiplier                  = optional(number)
     }))
+    md5_authentication_key = object({
+      name = string
+      key  = string
+    })
   })
 }

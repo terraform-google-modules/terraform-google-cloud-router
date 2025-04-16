@@ -48,4 +48,12 @@ resource "google_compute_router_peer" "peers" {
       multiplier                  = try(each.value.bfd.multiplier, null)
     }
   }
+
+  dynamic "md5_authentication_key" {
+    for_each = lookup(each.value, "md5_authentication_key", null) == null ? [] : [""]
+    content {
+      name = each.value.md5_authentication_key.name
+      key  = each.value.md5_authentication_key.key
+    }
+  }
 }

@@ -10,6 +10,7 @@
 | candidate\_subnets | Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). | `list(string)` | `null` | no |
 | create\_interface | Whether to create router interface (and peer) for this attachment. Set this to false for PARTNER type. | `bool` | `true` | no |
 | description | An optional description of this resource | `string` | `null` | no |
+| edge\_availability\_domain | Desired availability domain for the attachment. Only available for type PARTNER, at creation time. | `string` | `null` | no |
 | encryption | Indicates the user-supplied encryption option of this interconnect attachment. | `string` | `"NONE"` | no |
 | interconnect | URL of the underlying Interconnect object that this attachment's traffic will traverse through. | `string` | `""` | no |
 | interface | Interface to deploy for this attachment. | <pre>object({<br/>    name = string<br/>  })</pre> | `null` | no |

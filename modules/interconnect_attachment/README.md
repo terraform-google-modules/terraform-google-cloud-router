@@ -6,7 +6,7 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | admin\_enabled | Whether the VLAN attachment is enabled or disabled | `bool` | `true` | no |
-| bandwidth | Provisioned bandwidth capacity for the interconnect attachment | `string` | `null` | no |
+| bandwidth | Provisioned bandwidth capacity for the interconnect attachment | `string` | `"BPS_10G"` | no |
 | candidate\_subnets | Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). | `list(string)` | `null` | no |
 | create\_interface | Whether to create router interface (and peer) for this attachment. Set this to false for PARTNER type. | `bool` | `true` | no |
 | description | An optional description of this resource | `string` | `null` | no |

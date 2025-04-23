@@ -37,10 +37,10 @@ resource "google_compute_router_peer" "peers" {
   interface                 = google_compute_router_interface.interface.name
   peer_ip_address           = each.value.peer_ip_address
   peer_asn                  = each.value.peer_asn
-  advertised_route_priority = lookup(each.value, "advertised_route_priority", null)
+  advertised_route_priority = try(each.value.advertised_route_priority, null)
 
   dynamic "bfd" {
-    for_each = lookup(each.value, "bfd", null) == null ? [] : [""]
+    for_each = try(each.value.bfd, null) == null ? [] : [""]
     content {
       session_initialization_mode = try(each.value.bfd.session_initialization_mode, null)
       min_receive_interval        = try(each.value.bfd.min_receive_interval, null)
@@ -50,7 +50,7 @@ resource "google_compute_router_peer" "peers" {
   }
 
   dynamic "md5_authentication_key" {
-    for_each = each.value.md5_authentication_key == null ? [] : [""]
+    for_each = try(each.value.md5_authentication_key, null) == null ? [] : [""]
     content {
       name = each.value.md5_authentication_key.name
       key  = each.value.md5_authentication_key.key

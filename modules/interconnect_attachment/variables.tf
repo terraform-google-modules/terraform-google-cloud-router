@@ -55,7 +55,7 @@ variable "type" {
 variable "bandwidth" {
   type        = string
   description = "Provisioned bandwidth capacity for the interconnect attachment"
-  default     = null
+  default     = "BPS_10G"
 }
 
 variable "mtu" {

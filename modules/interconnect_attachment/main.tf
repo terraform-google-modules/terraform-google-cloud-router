@@ -52,3 +52,8 @@ module "interface" {
     bfd                       = lookup(var.peer, "bfd", null)
   }]
 }
+
+moved {
+  from = module.interface
+  to   = module.interface[0]
+}

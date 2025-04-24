@@ -13,11 +13,11 @@
 | edge\_availability\_domain | Desired availability domain for the attachment. Only available for type PARTNER, at creation time. | `string` | `null` | no |
 | encryption | Indicates the user-supplied encryption option of this interconnect attachment. | `string` | `"NONE"` | no |
 | interconnect | URL of the underlying Interconnect object that this attachment's traffic will traverse through. | `string` | `""` | no |
-| interface | Interface to deploy for this attachment. | <pre>object({<br/>    name = string<br/>  })</pre> | `null` | no |
+| interface | Interface to deploy for this attachment. | <pre>object({<br>    name = string<br>  })</pre> | `null` | no |
 | ipsec\_internal\_addresses | URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. | `list(string)` | `[]` | no |
 | mtu | Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440. | `string` | `null` | no |
 | name | The name of the interconnect attachment | `string` | n/a | yes |
-| peer | BGP Peer for this attachment. | <pre>object({<br/>    name                      = string<br/>    peer_asn                  = string<br/>    advertised_route_priority = optional(number)<br/>    bfd = optional(object({<br/>      session_initialization_mode = string<br/>      min_transmit_interval       = optional(number)<br/>      min_receive_interval        = optional(number)<br/>      multiplier                  = optional(number)<br/>    }))<br/>  })</pre> | `null` | no |
+| peer | BGP Peer for this attachment. | <pre>object({<br>    name                      = string<br>    peer_asn                  = string<br>    advertised_route_priority = optional(number)<br>    bfd = optional(object({<br>      session_initialization_mode = string<br>      min_transmit_interval       = optional(number)<br>      min_receive_interval        = optional(number)<br>      multiplier                  = optional(number)<br>    }))<br>  })</pre> | `null` | no |
 | project | The project ID to deploy to | `string` | n/a | yes |
 | region | Region where the attachment resides | `string` | n/a | yes |
 | router | Name of the router the attachment resides | `string` | n/a | yes |

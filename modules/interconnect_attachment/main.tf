@@ -45,7 +45,8 @@ module "interface" {
     # Peer IP Address must not contain the subnet mask, else will throw an invalid IP address error.
     peer_ip_address           = element(split("/", google_compute_interconnect_attachment.attachment.customer_router_ip_address), 0)
     peer_asn                  = var.peer.peer_asn
-    advertised_route_priority = lookup(var.peer, "advertised_route_priority", null)
-    bfd                       = lookup(var.peer, "bfd", null)
+    advertised_route_priority = try(var.peer.advertised_route_priority, null)
+    bfd                       = try(var.peer.bfd, null)
+    md5_authentication_key    = try(var.peer.md5_authentication_key, null)
   }]
 }

@@ -64,6 +64,10 @@ variable "peers" {
       min_receive_interval        = optional(number)
       multiplier                  = optional(number)
     })
+    md5_authentication_key = optional(object({
+      name = string
+      key  = string
+    }))
   }))
   description = "BGP peers for this interface."
   default     = []

@@ -7,6 +7,24 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.0.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v6.3.0...v7.0.0) (2025-04-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **TPG >= 5.12:** update interface module min provider version >= 5.12 ([#153](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/153))
+* MD5 authentication for BGP support
+
+### Features
+
+* MD5 authentication for BGP support ([e6f8b6c](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/e6f8b6c73f564faea90b90b468757e5e35b244a6))
+* partner interconnect ([#147](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/147)) ([0cff190](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/0cff1905735f4de59b65e12793adec7d3d6fa777))
+
+
+### Bug Fixes
+
+* **TPG >= 5.12:** update interface module min provider version &gt;= 5.12 ([#153](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/153)) ([532c95d](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/532c95d348055bc8d8eac198837f83352409c3a5))
+
 ## [6.3.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v6.2.0...v6.3.0) (2025-03-05)
 
 

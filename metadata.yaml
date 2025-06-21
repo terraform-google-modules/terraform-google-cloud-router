@@ -1,4 +1,4 @@
-# Copyright 2024 Google LLC
+# Copyright 2025 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -43,6 +43,29 @@ spec:
         location: examples/simple_example
   interfaces:
     variables:
+      - name: name
+        description: Name of the router
+        varType: string
+        required: true
+      - name: network
+        description: A reference to the network to which this router belongs
+        varType: string
+        required: true
+      - name: project
+        description: The project ID to deploy to
+        varType: string
+        required: true
+      - name: region
+        description: Region where the router resides
+        varType: string
+        required: true
+      - name: description
+        description: An optional description of this resource
+        varType: string
+      - name: encrypted_interconnect_router
+        description: An optional field to indicate if a router is dedicated to use with encrypted Interconnect Attachment
+        varType: bool
+        defaultValue: false
       - name: bgp
         description: BGP information specific to this router.
         varType: |-
@@ -56,13 +79,6 @@ spec:
               })), [])
               keepalive_interval = optional(number)
             })
-      - name: description
-        description: An optional description of this resource
-        varType: string
-      - name: name
-        description: Name of the router
-        varType: string
-        required: true
       - name: nats
         description: NATs to deploy on this router.
         varType: |-
@@ -71,6 +87,7 @@ spec:
               nat_ip_allocate_option              = optional(string)
               source_subnetwork_ip_ranges_to_nat  = optional(string)
               nat_ips                             = optional(list(string), [])
+              drain_nat_ips                       = optional(list(string), [])
               min_ports_per_vm                    = optional(number)
               max_ports_per_vm                    = optional(number)
               udp_idle_timeout_sec                = optional(number)
@@ -94,18 +111,6 @@ spec:
 
             }))
         defaultValue: []
-      - name: network
-        description: A reference to the network to which this router belongs
-        varType: string
-        required: true
-      - name: project
-        description: The project ID to deploy to
-        varType: string
-        required: true
-      - name: region
-        description: Region where the router resides
-        varType: string
-        required: true
     outputs:
       - name: nat
         description: Created NATs
@@ -120,3 +125,6 @@ spec:
       - cloudresourcemanager.googleapis.com
       - serviceusage.googleapis.com
       - compute.googleapis.com
+    providerVersions:
+      - source: hashicorp/google
+        version: ">= 4.51, < 7"

@@ -54,10 +54,11 @@ variable "interconnect_attachment" {
 
 variable "peers" {
   type = list(object({
-    name                      = string
-    peer_ip_address           = string
-    peer_asn                  = string
-    advertised_route_priority = optional(number)
+    name                           = string
+    peer_ip_address                = string
+    peer_asn                       = string
+    advertised_route_priority      = optional(number)
+    zero_advertised_route_priority = optional(bool)
     bfd = object({
       session_initialization_mode = string
       min_transmit_interval       = optional(number)

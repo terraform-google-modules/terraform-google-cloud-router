@@ -30,14 +30,15 @@ resource "google_compute_router_peer" "peers" {
     p.name => p
   }
 
-  name                      = each.value.name
-  project                   = google_compute_router_interface.interface.project
-  router                    = google_compute_router_interface.interface.router
-  region                    = google_compute_router_interface.interface.region
-  interface                 = google_compute_router_interface.interface.name
-  peer_ip_address           = each.value.peer_ip_address
-  peer_asn                  = each.value.peer_asn
-  advertised_route_priority = try(each.value.advertised_route_priority, null)
+  name                           = each.value.name
+  project                        = google_compute_router_interface.interface.project
+  router                         = google_compute_router_interface.interface.router
+  region                         = google_compute_router_interface.interface.region
+  interface                      = google_compute_router_interface.interface.name
+  peer_ip_address                = each.value.peer_ip_address
+  peer_asn                       = each.value.peer_asn
+  advertised_route_priority      = try(each.value.advertised_route_priority, null)
+  zero_advertised_route_priority = each.value.zero_advertised_route_priority
 
   dynamic "bfd" {
     for_each = try(each.value.bfd, null) == null ? [] : [""]

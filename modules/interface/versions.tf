@@ -20,11 +20,11 @@ terraform {
 
     google = {
       source  = "hashicorp/google"
-      version = ">= 4.51, < 7"
+      version = ">= 5.12, < 7"
     }
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-cloud-router:interface/v6.3.0"
+    module_name = "blueprints/terraform/terraform-google-cloud-router:interface/v7.0.0"
   }
 }

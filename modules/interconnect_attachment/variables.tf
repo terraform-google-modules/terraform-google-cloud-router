@@ -37,6 +37,7 @@ variable "region" {
 variable "interconnect" {
   type        = string
   description = "URL of the underlying Interconnect object that this attachment's traffic will traverse through."
+  default     = ""
 }
 
 variable "admin_enabled" {
@@ -60,6 +61,12 @@ variable "bandwidth" {
 variable "mtu" {
   type        = string
   description = "Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440."
+  default     = null
+}
+
+variable "edge_availability_domain" {
+  type        = string
+  description = "Desired availability domain for the attachment. Only available for type PARTNER, at creation time."
   default     = null
 }
 
@@ -93,11 +100,18 @@ variable "ipsec_internal_addresses" {
   default     = []
 }
 
+variable "create_interface" {
+  type        = bool
+  description = "Whether to create router interface (and peer) for this attachment. Set this to false for PARTNER type."
+  default     = true
+}
+
 variable "interface" {
   description = "Interface to deploy for this attachment."
   type = object({
     name = string
   })
+  default = null
 }
 
 variable "peer" {
@@ -112,5 +126,10 @@ variable "peer" {
       min_receive_interval        = optional(number)
       multiplier                  = optional(number)
     }))
+    md5_authentication_key = optional(object({
+      name = string
+      key  = string
+    }))
   })
+  default = null
 }

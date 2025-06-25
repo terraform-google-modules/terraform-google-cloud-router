@@ -1,4 +1,4 @@
-# Copyright 2024 Google LLC
+# Copyright 2025 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ spec:
       repo: https://github.com/terraform-google-modules/terraform-google-cloud-router.git
       sourceType: git
       dir: /modules/interface
-    version: 6.3.0
+    version: 7.0.0
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
@@ -40,47 +40,52 @@ spec:
         location: examples/simple_example
   interfaces:
     variables:
-      - name: interconnect_attachment
-        description: The name or resource link to the VLAN interconnect for this interface
-        varType: string
-      - name: ip_range
-        description: IP address and range of the interface
-        varType: string
       - name: name
         description: The name of the interface
         varType: string
         required: true
-      - name: peers
-        description: BGP peers for this interface.
-        varType: |-
-          list(object({
-              name                      = string
-              peer_ip_address           = string
-              peer_asn                  = string
-              advertised_route_priority = optional(number)
-              bfd = object({
-                session_initialization_mode = string
-                min_transmit_interval       = optional(number)
-                min_receive_interval        = optional(number)
-                multiplier                  = optional(number)
-              })
-            }))
-        defaultValue: []
       - name: project
         description: The project ID to deploy to
-        varType: string
-        required: true
-      - name: region
-        description: Region where the interface resides
         varType: string
         required: true
       - name: router
         description: Name of the router the interface resides
         varType: string
         required: true
+      - name: region
+        description: Region where the interface resides
+        varType: string
+        required: true
+      - name: ip_range
+        description: IP address and range of the interface
+        varType: string
       - name: vpn_tunnel
         description: The name or resource link to the VPN tunnel this interface will be linked to
         varType: string
+      - name: interconnect_attachment
+        description: The name or resource link to the VLAN interconnect for this interface
+        varType: string
+      - name: peers
+        description: BGP peers for this interface.
+        varType: |-
+          list(object({
+              name                           = string
+              peer_ip_address                = string
+              peer_asn                       = string
+              advertised_route_priority      = optional(number)
+              zero_advertised_route_priority = optional(bool)
+              bfd = object({
+                session_initialization_mode = string
+                min_transmit_interval       = optional(number)
+                min_receive_interval        = optional(number)
+                multiplier                  = optional(number)
+              })
+              md5_authentication_key = optional(object({
+                name = string
+                key  = string
+              }))
+            }))
+        defaultValue: []
   requirements:
     roles:
       - level: Project
@@ -90,3 +95,6 @@ spec:
       - cloudresourcemanager.googleapis.com
       - serviceusage.googleapis.com
       - compute.googleapis.com
+    providerVersions:
+      - source: hashicorp/google
+        version: ">= 5.12, < 7"

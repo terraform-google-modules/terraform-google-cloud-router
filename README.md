@@ -19,7 +19,7 @@ Basic usage of this module is as follows:
 ```hcl
 module "cloud_router" {
   source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 7.0"
+  version = "~> 7.1"
 
   name    = "example-router"
   region  = "us-central1"

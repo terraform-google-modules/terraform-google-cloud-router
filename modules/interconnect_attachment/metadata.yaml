@@ -109,9 +109,10 @@ spec:
         description: BGP Peer for this attachment.
         varType: |-
           object({
-              name                      = string
-              peer_asn                  = string
-              advertised_route_priority = optional(number)
+              name                           = string
+              peer_asn                       = string
+              advertised_route_priority      = optional(number)
+              zero_advertised_route_priority = optional(bool)
               bfd = optional(object({
                 session_initialization_mode = string
                 min_transmit_interval       = optional(number)

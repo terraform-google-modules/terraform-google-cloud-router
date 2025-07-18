@@ -117,9 +117,10 @@ variable "interface" {
 variable "peer" {
   description = "BGP Peer for this attachment."
   type = object({
-    name                      = string
-    peer_asn                  = string
-    advertised_route_priority = optional(number)
+    name                           = string
+    peer_asn                       = string
+    advertised_route_priority      = optional(number)
+    zero_advertised_route_priority = optional(bool)
     bfd = optional(object({
       session_initialization_mode = string
       min_transmit_interval       = optional(number)

@@ -50,8 +50,8 @@ module "interface" {
     peer_asn                       = try(var.peer.peer_asn, null)
     advertised_route_priority      = try(var.peer.advertised_route_priority, null)
     zero_advertised_route_priority = try(var.peer.zero_advertised_route_priority, false)
-    bfd                       = try(var.peer.bfd, null)
-    md5_authentication_key    = try(var.peer.md5_authentication_key, null)
+    bfd                            = try(var.peer.bfd, null)
+    md5_authentication_key         = try(var.peer.md5_authentication_key, null)
   }]
 }
 

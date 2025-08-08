@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.2.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v7.1.0...v7.2.0) (2025-08-08)
+
+
+### Features
+
+* Added zero_advertised_route_priority in interconnect_attachment sub-module ([#162](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/162)) ([f6423e0](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/f6423e0d73dab6807c6c69cd62cf46e5fba6e58e))
+
 ## [7.1.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v7.0.0...v7.1.0) (2025-06-25)
 
 

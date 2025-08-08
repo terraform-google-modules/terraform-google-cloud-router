@@ -26,6 +26,6 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-cloud-router:interconnect_attachment/v7.1.0"
+    module_name = "blueprints/terraform/terraform-google-cloud-router:interconnect_attachment/v7.2.0"
   }
 }

@@ -20,6 +20,7 @@ metadata:
     config.kubernetes.io/local-config: "true"
 spec:
   info:
+    title: "Cloud Router"
     source:
       repo: https://github.com/terraform-google-modules/terraform-google-cloud-router.git
       sourceType: git
@@ -51,6 +52,19 @@ spec:
         description: A reference to the network to which this router belongs
         varType: string
         required: true
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-network
+            spec:
+              outputExpr: network_name
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-network//modules/vpc
+            spec:
+              outputExpr: network_name
+          - source:
+              source: github.com/GoogleCloudPlatform/terraform-google-vpn
+            spec:
+              outputExpr: network
       - name: project
         description: The project ID to deploy to
         varType: string
@@ -114,8 +128,124 @@ spec:
     outputs:
       - name: nat
         description: Created NATs
+        type:
+          - object
+          - my-nat-gateway:
+              - object
+              - auto_network_tier: string
+                drain_nat_ips:
+                  - set
+                  - string
+                enable_dynamic_port_allocation: bool
+                enable_endpoint_independent_mapping: bool
+                endpoint_types:
+                  - list
+                  - string
+                icmp_idle_timeout_sec: number
+                id: string
+                initial_nat_ips:
+                  - set
+                  - string
+                log_config:
+                  - list
+                  - - object
+                    - enable: bool
+                      filter: string
+                max_ports_per_vm: number
+                min_ports_per_vm: number
+                name: string
+                nat64_subnetwork:
+                  - set
+                  - - object
+                    - name: string
+                nat_ip_allocate_option: string
+                nat_ips:
+                  - set
+                  - string
+                project: string
+                region: string
+                router: string
+                rules:
+                  - set
+                  - - object
+                    - action:
+                        - list
+                        - - object
+                          - source_nat_active_ips:
+                              - set
+                              - string
+                            source_nat_active_ranges:
+                              - set
+                              - string
+                            source_nat_drain_ips:
+                              - set
+                              - string
+                            source_nat_drain_ranges:
+                              - set
+                              - string
+                      description: string
+                      match: string
+                      rule_number: number
+                source_subnetwork_ip_ranges_to_nat: string
+                source_subnetwork_ip_ranges_to_nat64: string
+                subnetwork:
+                  - set
+                  - - object
+                    - name: string
+                      secondary_ip_range_names:
+                        - set
+                        - string
+                      source_ip_ranges_to_nat:
+                        - set
+                        - string
+                tcp_established_idle_timeout_sec: number
+                tcp_time_wait_timeout_sec: number
+                tcp_transitory_idle_timeout_sec: number
+                timeouts:
+                  - object
+                  - create: string
+                    delete: string
+                    update: string
+                type: string
+                udp_idle_timeout_sec: number
       - name: router
         description: Created Router
+        type:
+          - object
+          - bgp:
+              - list
+              - - object
+                - advertise_mode: string
+                  advertised_groups:
+                    - list
+                    - string
+                  advertised_ip_ranges:
+                    - set
+                    - - object
+                      - description: string
+                        range: string
+                  asn: number
+                  identifier_range: string
+                  keepalive_interval: number
+            creation_timestamp: string
+            description: string
+            encrypted_interconnect_router: bool
+            id: string
+            md5_authentication_keys:
+              - list
+              - - object
+                - key: string
+                  name: string
+            name: string
+            network: string
+            project: string
+            region: string
+            self_link: string
+            timeouts:
+              - object
+              - create: string
+                delete: string
+                update: string
   requirements:
     roles:
       - level: Project
@@ -127,4 +257,4 @@ spec:
       - compute.googleapis.com
     providerVersions:
       - source: hashicorp/google
-        version: ">= 4.51, < 7"
+        version: ">= 4.51, < 8"

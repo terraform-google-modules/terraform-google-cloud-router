@@ -52,6 +52,19 @@ spec:
         description: Name of the router the interface resides
         varType: string
         required: true
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-cloud-router
+            spec:
+              outputExpr: router.name
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-cloud-nat
+            spec:
+              outputExpr: router_name
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-vpn//modules/vpn-ha
+            spec:
+              outputExpr: router_name
       - name: region
         description: Region where the interface resides
         varType: string
@@ -62,6 +75,15 @@ spec:
       - name: vpn_tunnel
         description: The name or resource link to the VPN tunnel this interface will be linked to
         varType: string
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-vpn//modules/vpn-ha
+            spec:
+              outputExpr: values(tunnel_self_links)[0]
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-vpn
+            spec:
+              outputExpr: vpn_tunnels_self_link-dynamic[0]
       - name: interconnect_attachment
         description: The name or resource link to the VLAN interconnect for this interface
         varType: string
@@ -97,4 +119,4 @@ spec:
       - compute.googleapis.com
     providerVersions:
       - source: hashicorp/google
-        version: ">= 5.12, < 7"
+        version: ">= 5.12, < 8"

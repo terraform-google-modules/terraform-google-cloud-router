@@ -31,9 +31,11 @@ spec:
         interconnect_attachment:
           name: interconnect_attachment
           title: Interconnect Attachment
+          level: 1
         ip_range:
           name: ip_range
           title: Ip Range
+          level: 1
         name:
           name: name
           title: Name
@@ -52,3 +54,4 @@ spec:
         vpn_tunnel:
           name: vpn_tunnel
           title: Vpn Tunnel
+          level: 1

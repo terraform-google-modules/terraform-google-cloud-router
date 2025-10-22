@@ -55,14 +55,17 @@ spec:
         connections:
           - source:
               source: github.com/terraform-google-modules/terraform-google-network
+              version: ">= 11.0.0"
             spec:
               outputExpr: network_name
           - source:
               source: github.com/terraform-google-modules/terraform-google-network//modules/vpc
+              version: ">= 11.0.0"
             spec:
               outputExpr: network_name
           - source:
               source: github.com/GoogleCloudPlatform/terraform-google-vpn
+              version: ">= 5.0.0"
             spec:
               outputExpr: network
       - name: project

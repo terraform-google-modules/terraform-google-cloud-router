@@ -20,6 +20,7 @@ metadata:
     config.kubernetes.io/local-config: "true"
 spec:
   info:
+    title: "Cloud Router"
     source:
       repo: https://github.com/terraform-google-modules/terraform-google-cloud-router.git
       sourceType: git
@@ -29,6 +30,7 @@ spec:
         bgp:
           name: bgp
           title: Bgp
+          level: 1
         description:
           name: description
           title: Description
@@ -41,6 +43,7 @@ spec:
         nats:
           name: nats
           title: Nats
+          level: 1
         network:
           name: network
           title: Network

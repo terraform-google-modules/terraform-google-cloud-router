@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.4.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v7.3.0...v7.4.0) (2025-10-27)
+
+
+### Features
+
+* Make cloud-router module ADC compliant ([#171](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/171)) ([8f29a17](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/8f29a1756e1b909d2207222cb5f3009a7f8e043e))
+
 ## [7.3.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v7.2.0...v7.3.0) (2025-08-28)
 
 

@@ -41,12 +41,12 @@ module "vpc" {
 
 # [START cloudnat_simple_create]
 module "cloud_router" {
-  source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 7.0"
-  name    = "my-cloud-router"
-  project = var.project_id
-  network = module.vpc.network_name
-  region  = "us-central1"
+  source = "../.."
+
+  name       = "my-cloud-router"
+  project_id = var.project_id
+  network    = module.vpc.network_name
+  region     = "us-central1"
 
   nats = [{
     name                               = "my-nat-gateway"

@@ -37,7 +37,7 @@ module "interface" {
 
   source                  = "../interface"
   name                    = try(var.interface.name, null)
-  project                 = var.project
+  project_id              = var.project
   router                  = var.router
   region                  = var.region
   ip_range                = google_compute_interconnect_attachment.attachment.cloud_router_ip_address

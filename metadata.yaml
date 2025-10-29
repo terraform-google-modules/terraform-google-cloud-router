@@ -21,6 +21,7 @@ metadata:
 spec:
   info:
     title: "Cloud Router"
+    title: "Cloud Router"
     source:
       repo: https://github.com/terraform-google-modules/terraform-google-cloud-router.git
       sourceType: git
@@ -55,20 +56,20 @@ spec:
         connections:
           - source:
               source: github.com/terraform-google-modules/terraform-google-network
-              version: ">= 11.0.0"
+              version: ">= 12.0.0"
             spec:
               outputExpr: network_name
           - source:
               source: github.com/terraform-google-modules/terraform-google-network//modules/vpc
-              version: ">= 11.0.0"
+              version: ">= 12.0.0"
             spec:
               outputExpr: network_name
           - source:
               source: github.com/GoogleCloudPlatform/terraform-google-vpn
-              version: ">= 5.0.0"
+              version: ">= 6.1.0"
             spec:
               outputExpr: network
-      - name: project
+      - name: project_id
         description: The project ID to deploy to
         varType: string
         required: true

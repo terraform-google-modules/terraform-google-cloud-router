@@ -18,7 +18,7 @@ resource "google_compute_router" "router" {
   name                          = var.name
   network                       = var.network
   region                        = var.region
-  project                       = var.project
+  project                       = var.project_id
   description                   = var.description
   encrypted_interconnect_router = var.encrypted_interconnect_router
 

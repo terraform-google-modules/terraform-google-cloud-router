@@ -24,7 +24,7 @@ variable "network" {
   description = "A reference to the network to which this router belongs"
 }
 
-variable "project" {
+variable "project_id" {
   type        = string
   description = "The project ID to deploy to"
 }

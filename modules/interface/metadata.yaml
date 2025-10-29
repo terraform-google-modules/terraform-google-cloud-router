@@ -44,7 +44,7 @@ spec:
         description: The name of the interface
         varType: string
         required: true
-      - name: project
+      - name: project_id
         description: The project ID to deploy to
         varType: string
         required: true
@@ -55,17 +55,17 @@ spec:
         connections:
           - source:
               source: github.com/terraform-google-modules/terraform-google-cloud-router
-              version: ">= 7.0.0"
+              version: ">= 7.4.0"
             spec:
               outputExpr: router.name
           - source:
               source: github.com/terraform-google-modules/terraform-google-cloud-nat
-              version: ">= 4.0.0"
+              version: ">= 5.4.0"
             spec:
               outputExpr: router_name
           - source:
               source: github.com/terraform-google-modules/terraform-google-vpn//modules/vpn-ha
-              version: ">= 5.0.0"
+              version: ">= 6.1.0"
             spec:
               outputExpr: router_name
       - name: region
@@ -80,13 +80,8 @@ spec:
         varType: string
         connections:
           - source:
-              source: github.com/terraform-google-modules/terraform-google-vpn//modules/vpn-ha
-              version: ">= 5.0.0"
-            spec:
-              outputExpr: values(tunnel_self_links)[0]
-          - source:
               source: github.com/terraform-google-modules/terraform-google-vpn
-              version: ">= 5.0.0"
+              version: ">= 6.1.0"
             spec:
               outputExpr: vpn_tunnels_self_link-dynamic[0]
       - name: interconnect_attachment

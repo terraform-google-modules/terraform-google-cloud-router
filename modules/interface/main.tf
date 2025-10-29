@@ -16,7 +16,7 @@
 
 resource "google_compute_router_interface" "interface" {
   name                    = var.name
-  project                 = var.project
+  project                 = var.project_id
   router                  = var.router
   region                  = var.region
   ip_range                = var.ip_range

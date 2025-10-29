@@ -7,6 +7,17 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.0.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v7.4.0...v8.0.0) (2025-10-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename project input variable to project_id for consistency ([#173](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/173))
+
+### Features
+
+* rename project input variable to project_id for consistency ([#173](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/173)) ([8862c88](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/8862c88a8b468d3f8d6d24c521acc911171f9d8e))
+
 ## [7.4.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v7.3.0...v7.4.0) (2025-10-27)
 
 

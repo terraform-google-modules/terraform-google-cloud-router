@@ -21,7 +21,6 @@ metadata:
 spec:
   info:
     title: "Cloud Router"
-    title: "Cloud Router"
     source:
       repo: https://github.com/terraform-google-modules/terraform-google-cloud-router.git
       sourceType: git

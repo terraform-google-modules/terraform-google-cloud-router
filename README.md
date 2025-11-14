@@ -30,7 +30,7 @@ module "cloud_router" {
     asn = "65001"
   }
 
-  project = "<PROJECT ID>"
+  project_id = "<PROJECT ID>"
   network = "default"
 }
 ```

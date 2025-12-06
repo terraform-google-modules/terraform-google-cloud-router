@@ -30,7 +30,7 @@ module "cloud_router" {
 
 module "interconnect_attachment" {
   source  = "terraform-google-modules/cloud-router/google//modules/interconnect_attachment"
-  version = "~> 7.0"
+  version = "~> 8.0"
 
   name    = "example-attachment"
   project = "example-project"

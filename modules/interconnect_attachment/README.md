@@ -21,6 +21,7 @@
 | project | The project ID to deploy to | `string` | n/a | yes |
 | region | Region where the attachment resides | `string` | n/a | yes |
 | router | Name of the router the attachment resides | `string` | n/a | yes |
+| stack\_type | The stack type for this interconnect attachment. Possible values are IPV4\_ONLY and IPV4\_IPV6. | `string` | `"IPV4_ONLY"` | no |
 | type | The type of InterconnectAttachment you wish to create | `string` | `"DEDICATED"` | no |
 | vlan\_tag8021q | The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. | `string` | `null` | no |
 

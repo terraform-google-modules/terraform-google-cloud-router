@@ -30,6 +30,7 @@ resource "google_compute_interconnect_attachment" "attachment" {
   vlan_tag8021q            = var.vlan_tag8021q
   encryption               = var.encryption
   ipsec_internal_addresses = var.ipsec_internal_addresses
+  stack_type               = var.stack_type
 }
 
 module "interface" {

@@ -76,6 +76,14 @@ spec:
         router:
           name: router
           title: Router
+        stack_type:
+          name: stack_type
+          title: Stack Type
+          enumValueLabels:
+            - label: IPV4_IPV6
+              value: IPV4_IPV6
+            - label: IPV4_ONLY
+              value: IPV4_ONLY
         type:
           name: type
           title: Type

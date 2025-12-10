@@ -15,7 +15,7 @@
  */
 
 module "cloud_router" {
-  source = "NandiniAgrawal15/cloud-router/google"
+  source = "../.."
 
   name       = "example-router"
   project_id = "example-project"
@@ -29,7 +29,7 @@ module "cloud_router" {
 }
 
 module "interconnect_attachment" {
-  source = "NandiniAgrawal15/cloud-router/google//modules/interconnect_attachment"
+  source = "../../modules/interconnect_attachment"
   # version = "~> 7.0"
 
   name    = "example-attachment"

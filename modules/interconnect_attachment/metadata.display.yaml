@@ -76,6 +76,9 @@ spec:
         router:
           name: router
           title: Router
+        stack_type:
+          name: stack_type
+          title: Stack Type
         type:
           name: type
           title: Type

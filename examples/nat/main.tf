@@ -36,6 +36,7 @@ module "vpc" {
       },
     ]
   }
+  bgp_best_path_selection_mode = "STANDARD"
 }
 
 

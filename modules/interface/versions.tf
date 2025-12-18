@@ -22,10 +22,6 @@ terraform {
       source  = "hashicorp/google"
       version = ">= 5.12, < 8"
     }
-    null = {
-      source  = "hashicorp/null"
-      version = "~> 3.2"
-    }
   }
 
   provider_meta "google" {

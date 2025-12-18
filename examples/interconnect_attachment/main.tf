@@ -17,10 +17,10 @@
 module "cloud_router" {
   source = "../.."
 
-  name    = "example-router"
+  name       = "example-router"
   project_id = "example-project"
-  network = "default"
-  region  = "us-central1"
+  network    = "default"
+  region     = "us-central1"
 
   bgp = {
     asn               = 65000
@@ -29,8 +29,8 @@ module "cloud_router" {
 }
 
 module "interconnect_attachment" {
-  source  = "terraform-google-modules/cloud-router/google//modules/interconnect_attachment"
-  version = "~> 7.0"
+  source = "../../modules/interconnect_attachment"
+  # version = "~> 7.0"
 
   name    = "example-attachment"
   project = "example-project"

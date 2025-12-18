@@ -94,6 +94,12 @@ variable "encryption" {
   default     = "NONE"
 }
 
+variable "stack_type" {
+  description = "The stack type for this interconnect attachment. Possible values are IPV4_ONLY and IPV4_IPV6."
+  type        = string
+  default     = "IPV4_ONLY"
+}
+
 variable "ipsec_internal_addresses" {
   type        = list(string)
   description = "URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC."

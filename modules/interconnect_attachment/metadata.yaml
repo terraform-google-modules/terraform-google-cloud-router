@@ -91,6 +91,10 @@ spec:
         description: Indicates the user-supplied encryption option of this interconnect attachment.
         varType: string
         defaultValue: NONE
+      - name: stack_type
+        description: The stack type for this interconnect attachment. Possible values are IPV4_ONLY and IPV4_IPV6.
+        varType: string
+        defaultValue: IPV4_ONLY
       - name: ipsec_internal_addresses
         description: URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC.
         varType: list(string)

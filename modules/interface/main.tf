@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,29 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-locals {
-  has_ip_range                = var.ip_range != null
-  has_vpn_tunnel              = var.vpn_tunnel != null
-  has_interconnect_attachment = var.interconnect_attachment != null
-
-  # True if exactly one of vpn_tunnel or interconnect_attachment is set
-  exactly_one_link_type = ((local.has_vpn_tunnel ? 1 : 0) + (local.has_interconnect_attachment ? 1 : 0)) == 1
-}
-
-# Validation Resource: Enforces the connection type rules
-resource "null_resource" "interface_connection_validation" {
-  lifecycle {
-    precondition {
-      condition = (
-        (local.has_ip_range && !local.has_vpn_tunnel && !local.has_interconnect_attachment) ||
-        (!local.has_ip_range && local.exactly_one_link_type) ||
-        (local.has_ip_range && local.exactly_one_link_type)
-      )
-      error_message = "Invalid argument combination for router interface. Please provide: (1) only ip_range, OR (2) exactly one of (vpn_tunnel, interconnect_attachment), OR (3) ip_range AND exactly one of (vpn_tunnel, interconnect_attachment)."
-    }
-  }
-}
 
 resource "google_compute_router_interface" "interface" {
   name                    = var.name

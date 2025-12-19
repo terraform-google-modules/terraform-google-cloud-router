@@ -253,7 +253,11 @@ spec:
     roles:
       - level: Project
         roles:
-          - roles/owner
+          - roles/iam.serviceAccountAdmin
+          - roles/iam.serviceAccountUser
+          - roles/resourcemanager.projectIamAdmin
+          - roles/serviceusage.serviceUsageAdmin
+          - roles/compute.networkAdmin
     services:
       - cloudresourcemanager.googleapis.com
       - serviceusage.googleapis.com

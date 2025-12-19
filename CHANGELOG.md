@@ -7,6 +7,14 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.1.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v8.0.0...v8.1.0) (2025-12-19)
+
+
+### Features
+
+* Add 'stack_type' variable for IPv6 Interconnect Attachment ([#184](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/184)) ([5434638](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/54346388b68ab9b9f0664c141cd2af84242cbd8d))
+* Add interface connection validation and update metadata ([#183](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/183)) ([757f9de](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/757f9debb243822dcd5a593584350dcda52ab261))
+
 ## [8.0.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v7.4.0...v8.0.0) (2025-11-05)
 
 

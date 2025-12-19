@@ -116,6 +116,7 @@ spec:
           - roles/iam.serviceAccountUser
           - roles/resourcemanager.projectIamAdmin
           - roles/serviceusage.serviceUsageAdmin
+          - roles/compute.networkAdmin
     services:
       - cloudresourcemanager.googleapis.com
       - serviceusage.googleapis.com

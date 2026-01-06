@@ -24,7 +24,7 @@ spec:
     source:
       repo: https://github.com/terraform-google-modules/terraform-google-cloud-router.git
       sourceType: git
-    version: 8.0.0
+    version: 8.1.0
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"
@@ -253,7 +253,11 @@ spec:
     roles:
       - level: Project
         roles:
-          - roles/owner
+          - roles/iam.serviceAccountAdmin
+          - roles/iam.serviceAccountUser
+          - roles/resourcemanager.projectIamAdmin
+          - roles/serviceusage.serviceUsageAdmin
+          - roles/compute.networkAdmin
     services:
       - cloudresourcemanager.googleapis.com
       - serviceusage.googleapis.com

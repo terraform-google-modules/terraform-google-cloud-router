@@ -34,6 +34,7 @@ spec:
         description:
           name: description
           title: Description
+          level: 1
         encrypted_interconnect_router:
           name: encrypted_interconnect_router
           title: Encrypted Interconnect Router
@@ -53,3 +54,9 @@ spec:
         region:
           name: region
           title: Region
+    runtime:
+      outputs:
+        nat:
+          visibility: VISIBILITY_ROOT
+        router:
+          visibility: VISIBILITY_ROOT

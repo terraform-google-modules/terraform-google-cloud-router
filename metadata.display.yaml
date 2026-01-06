@@ -54,3 +54,9 @@ spec:
         region:
           name: region
           title: Region
+    runtime:
+      outputs:
+        nat:
+          visibility: VISIBILITY_ROOT
+        router:
+          visibility: VISIBILITY_ROOT

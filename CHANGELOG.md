@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.2.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v8.1.0...v8.2.0) (2026-01-06)
+
+
+### Features
+
+* Add VISIBILITY_ROOT to router and nat outputs ([#186](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/186)) ([e85af08](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/e85af08ead06fc80bc2a88a1b4f4929b26627f2c))
+
 ## [8.1.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v8.0.0...v8.1.0) (2025-12-19)
 
 

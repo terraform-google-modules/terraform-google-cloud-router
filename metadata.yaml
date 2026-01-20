@@ -128,6 +128,12 @@ spec:
 
             }))
         defaultValue: []
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-address
+              version: ">= 4.0.0"
+            spec:
+              outputExpr: "[{\"name\": \"my-nat-gateway\", \"nat_ips\": self_links, \"source_subnetwork_ip_ranges_to_nat\": \"ALL_SUBNETWORKS_ALL_IP_RANGES\"}]"
     outputs:
       - name: nat
         description: Created NATs

@@ -22,9 +22,9 @@ spec:
   info:
     title: "Cloud Router"
     source:
-      repo: https://github.com/terraform-google-modules/terraform-google-cloud-router.git
+      repo: https://github.com/yuktatechgog/terraform-google-cloud-router.git
       sourceType: git
-    version: 8.2.0
+    version: 7.4.6
     actuationTool:
       flavor: Terraform
       version: ">= 1.3"

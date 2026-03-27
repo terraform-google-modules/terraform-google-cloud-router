@@ -127,6 +127,8 @@ variable "peer" {
     peer_asn                       = string
     advertised_route_priority      = optional(number)
     zero_advertised_route_priority = optional(bool)
+    export_policies                = optional(list(string))
+    import_policies                = optional(list(string))
     bfd = optional(object({
       session_initialization_mode = string
       min_transmit_interval       = optional(number)

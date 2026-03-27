@@ -53,6 +53,8 @@ module "interface" {
     zero_advertised_route_priority = try(var.peer.zero_advertised_route_priority, false)
     bfd                            = try(var.peer.bfd, null)
     md5_authentication_key         = try(var.peer.md5_authentication_key, null)
+    export_policies                = try(var.peer.export_policies, null)
+    import_policies                = try(var.peer.import_policies, null)
   }]
 }
 

@@ -7,6 +7,17 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [9.0.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v8.3.0...v9.0.0) (2026-04-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **TPG>5.39:** Add Router interface policies ([#194](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/194))
+
+### Features
+
+* **TPG>5.39:** Add Router interface policies ([#194](https://github.com/terraform-google-modules/terraform-google-cloud-router/issues/194)) ([96e9a06](https://github.com/terraform-google-modules/terraform-google-cloud-router/commit/96e9a062db7be74ce7b8670e3168fb0dd342525b))
+
 ## [8.3.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v8.2.0...v8.3.0) (2026-01-21)
 
 

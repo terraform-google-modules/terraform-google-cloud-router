@@ -39,6 +39,8 @@ resource "google_compute_router_peer" "peers" {
   peer_asn                       = each.value.peer_asn
   advertised_route_priority      = try(each.value.advertised_route_priority, null)
   zero_advertised_route_priority = each.value.zero_advertised_route_priority
+  export_policies                = try(each.value.export_policies, null)
+  import_policies                = try(each.value.import_policies, null)
 
   dynamic "bfd" {
     for_each = try(each.value.bfd, null) == null ? [] : [""]

@@ -69,6 +69,8 @@ variable "peers" {
       name = string
       key  = string
     }))
+    export_policies = optional(list(string))
+    import_policies = optional(list(string))
   }))
   description = "BGP peers for this interface."
   default     = []

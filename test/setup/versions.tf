@@ -26,4 +26,13 @@ terraform {
       version = ">= 3.53.0, < 8"
     }
   }
+  required_version = ">=0.12.6"
+}
+
+provider "google" {
+  version = "~> 3.53.0"
+}
+
+provider "google-beta" {
+  version = "~> 3.53.0"
 }

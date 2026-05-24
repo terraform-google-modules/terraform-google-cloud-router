@@ -17,6 +17,7 @@
 module "project" {
   source  = "terraform-google-modules/project-factory/google"
   version = "~> 18.0"
+  version = "~> 10.0"
 
   name              = "ci-cloud-router"
   random_project_id = "true"

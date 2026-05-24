@@ -15,33 +15,50 @@
  */
 
 resource "google_compute_interconnect_attachment" "attachment" {
-  name              = var.name
-  router            = var.router
-  project           = var.project
-  region            = var.region
-  interconnect      = var.interconnect
-  admin_enabled     = var.admin_enabled
-  type              = var.type
-  description       = var.description
-  bandwidth         = var.bandwidth
-  candidate_subnets = var.candidate_subnets
-  vlan_tag8021q     = var.vlan_tag8021q
+  name                     = var.name
+  router                   = var.router
+  project                  = var.project
+  region                   = var.region
+  interconnect             = var.interconnect
+  admin_enabled            = var.admin_enabled
+  type                     = var.type
+  edge_availability_domain = var.edge_availability_domain
+  description              = var.description
+  bandwidth                = var.type == "DEDICATED" ? var.bandwidth : null
+  mtu                      = var.mtu
+  candidate_subnets        = var.candidate_subnets
+  vlan_tag8021q            = var.vlan_tag8021q
+  encryption               = var.encryption
+  ipsec_internal_addresses = var.ipsec_internal_addresses
+  stack_type               = var.stack_type
 }
 
 module "interface" {
+  count = var.create_interface ? 1 : 0
+
   source                  = "../interface"
-  name                    = var.interface.name
-  project                 = var.project
+  name                    = try(var.interface.name, null)
+  project_id              = var.project
   router                  = var.router
   region                  = var.region
   ip_range                = google_compute_interconnect_attachment.attachment.cloud_router_ip_address
   interconnect_attachment = google_compute_interconnect_attachment.attachment.self_link
   peers = [{
-    name = var.peer.name
+    name = try(var.peer.name, null)
 
     # Peer IP Address must not contain the subnet mask, else will throw an invalid IP address error.
-    peer_ip_address           = element(split("/", google_compute_interconnect_attachment.attachment.customer_router_ip_address), 0)
-    peer_asn                  = var.peer.peer_asn
-    advertised_route_priority = lookup(var.peer, "advertised_route_priority", null)
+    peer_ip_address                = element(split("/", google_compute_interconnect_attachment.attachment.customer_router_ip_address), 0)
+    peer_asn                       = try(var.peer.peer_asn, null)
+    advertised_route_priority      = try(var.peer.advertised_route_priority, null)
+    zero_advertised_route_priority = try(var.peer.zero_advertised_route_priority, false)
+    export_policies                = try(var.peer.export_policies, null)
+    import_policies                = try(var.peer.import_policies, null)
+    bfd                            = try(var.peer.bfd, null)
+    md5_authentication_key         = try(var.peer.md5_authentication_key, null)
   }]
+}
+
+moved {
+  from = module.interface
+  to   = module.interface[0]
 }

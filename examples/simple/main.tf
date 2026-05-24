@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,15 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+module "vpc" {
+  source  = "terraform-google-modules/network/google"
+  version = "~> 16.0"
 
-provider "google" {
-  version = "~> 3.0"
+  project_id                   = var.project_id
+  network_name                 = "test-network-name"
+  routing_mode                 = "GLOBAL"
+  subnets                      = []
+  bgp_best_path_selection_mode = "STANDARD"
 }
+
 
 # [START cloudrouter_create]
 module "cloud_router" {
-  source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 0.4"
+  source = "../.."
 
   name   = "my-router"
   region = "us-central1"
@@ -32,9 +38,7 @@ module "cloud_router" {
     asn = "65001"
   }
 
-  # project = "my-project-id"
-  project = var.project
-  # network = "my-network"
-  network = var.network
+  project_id = var.project_id
+  network    = module.vpc.network_name
 }
 # [END cloudrouter_create]

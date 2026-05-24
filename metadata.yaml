@@ -1,0 +1,272 @@
+# Copyright 2026 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-cloud-router
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  info:
+    source:
+      repo: https://github.com/terraform-google-modules/terraform-google-cloud-router.git
+      sourceType: git
+    version: 9.0.0
+    actuationTool:
+      flavor: Terraform
+      version: ">= 1.3"
+    description: {}
+  content:
+    subBlueprints:
+      - name: interconnect_attachment
+        location: modules/interconnect_attachment
+      - name: interface
+        location: modules/interface
+    examples:
+      - name: interconnect_attachment
+        location: examples/interconnect_attachment
+      - name: nat
+        location: examples/nat
+      - name: simple_example
+        location: examples/simple_example
+  interfaces:
+    variables:
+      - name: name
+        description: Name of the router
+        varType: string
+        required: true
+      - name: network
+        description: A reference to the network to which this router belongs
+        varType: string
+        required: true
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-network
+              version: ">= 12.0.0"
+            spec:
+              outputExpr: network_name
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-network//modules/vpc
+              version: ">= 12.0.0"
+            spec:
+              outputExpr: network_name
+          - source:
+              source: github.com/GoogleCloudPlatform/terraform-google-vpn
+              version: ">= 6.1.0"
+            spec:
+              outputExpr: network
+      - name: project_id
+        description: The project ID to deploy to
+        varType: string
+        required: true
+      - name: region
+        description: Region where the router resides
+        varType: string
+        required: true
+      - name: description
+        description: An optional description of this resource
+        varType: string
+      - name: encrypted_interconnect_router
+        description: An optional field to indicate if a router is dedicated to use with encrypted Interconnect Attachment
+        varType: bool
+        defaultValue: false
+      - name: bgp
+        description: BGP information specific to this router.
+        varType: |-
+          object({
+              asn               = string
+              advertise_mode    = optional(string, "CUSTOM")
+              advertised_groups = optional(list(string))
+              advertised_ip_ranges = optional(list(object({
+                range       = string
+                description = optional(string)
+              })), [])
+              keepalive_interval = optional(number)
+            })
+      - name: nats
+        description: NATs to deploy on this router.
+        varType: |-
+          list(object({
+              name                                = string
+              nat_ip_allocate_option              = optional(string)
+              source_subnetwork_ip_ranges_to_nat  = optional(string)
+              nat_ips                             = optional(list(string), [])
+              drain_nat_ips                       = optional(list(string), [])
+              min_ports_per_vm                    = optional(number)
+              max_ports_per_vm                    = optional(number)
+              udp_idle_timeout_sec                = optional(number)
+              icmp_idle_timeout_sec               = optional(number)
+              tcp_established_idle_timeout_sec    = optional(number)
+              tcp_transitory_idle_timeout_sec     = optional(number)
+              tcp_time_wait_timeout_sec           = optional(number)
+              enable_endpoint_independent_mapping = optional(bool)
+              enable_dynamic_port_allocation      = optional(bool)
+
+              log_config = optional(object({
+                enable = optional(bool, true)
+                filter = optional(string, "ALL")
+              }), {})
+
+              subnetworks = optional(list(object({
+                name                     = string
+                source_ip_ranges_to_nat  = list(string)
+                secondary_ip_range_names = optional(list(string))
+              })), [])
+
+            }))
+        defaultValue: []
+        connections:
+          - source:
+              source: github.com/terraform-google-modules/terraform-google-address
+              version: ">= 4.0.0"
+            spec:
+              outputExpr: "{\"name\": \"nat-gateway\", \"nat_ips\": self_links, \"source_subnetwork_ip_ranges_to_nat\": \"ALL_SUBNETWORKS_ALL_IP_RANGES\"}"
+    outputs:
+      - name: nat
+        description: Created NATs
+        type:
+          - object
+          - my-nat-gateway:
+              - object
+              - auto_network_tier: string
+                drain_nat_ips:
+                  - set
+                  - string
+                enable_dynamic_port_allocation: bool
+                enable_endpoint_independent_mapping: bool
+                endpoint_types:
+                  - list
+                  - string
+                icmp_idle_timeout_sec: number
+                id: string
+                initial_nat_ips:
+                  - set
+                  - string
+                log_config:
+                  - list
+                  - - object
+                    - enable: bool
+                      filter: string
+                max_ports_per_vm: number
+                min_ports_per_vm: number
+                name: string
+                nat64_subnetwork:
+                  - set
+                  - - object
+                    - name: string
+                nat_ip_allocate_option: string
+                nat_ips:
+                  - set
+                  - string
+                project: string
+                region: string
+                router: string
+                rules:
+                  - set
+                  - - object
+                    - action:
+                        - list
+                        - - object
+                          - source_nat_active_ips:
+                              - set
+                              - string
+                            source_nat_active_ranges:
+                              - set
+                              - string
+                            source_nat_drain_ips:
+                              - set
+                              - string
+                            source_nat_drain_ranges:
+                              - set
+                              - string
+                      description: string
+                      match: string
+                      rule_number: number
+                source_subnetwork_ip_ranges_to_nat: string
+                source_subnetwork_ip_ranges_to_nat64: string
+                subnetwork:
+                  - set
+                  - - object
+                    - name: string
+                      secondary_ip_range_names:
+                        - set
+                        - string
+                      source_ip_ranges_to_nat:
+                        - set
+                        - string
+                tcp_established_idle_timeout_sec: number
+                tcp_time_wait_timeout_sec: number
+                tcp_transitory_idle_timeout_sec: number
+                timeouts:
+                  - object
+                  - create: string
+                    delete: string
+                    update: string
+                type: string
+                udp_idle_timeout_sec: number
+      - name: router
+        description: Created Router
+        type:
+          - object
+          - bgp:
+              - list
+              - - object
+                - advertise_mode: string
+                  advertised_groups:
+                    - list
+                    - string
+                  advertised_ip_ranges:
+                    - set
+                    - - object
+                      - description: string
+                        range: string
+                  asn: number
+                  identifier_range: string
+                  keepalive_interval: number
+            creation_timestamp: string
+            description: string
+            encrypted_interconnect_router: bool
+            id: string
+            md5_authentication_keys:
+              - list
+              - - object
+                - key: string
+                  name: string
+            name: string
+            network: string
+            project: string
+            region: string
+            self_link: string
+            timeouts:
+              - object
+              - create: string
+                delete: string
+                update: string
+  requirements:
+    roles:
+      - level: Project
+        roles:
+          - roles/iam.serviceAccountAdmin
+          - roles/iam.serviceAccountUser
+          - roles/resourcemanager.projectIamAdmin
+          - roles/serviceusage.serviceUsageAdmin
+          - roles/compute.networkAdmin
+    services:
+      - cloudresourcemanager.googleapis.com
+      - serviceusage.googleapis.com
+      - compute.googleapis.com
+    providerVersions:
+      - source: hashicorp/google
+        version: ">= 4.51, < 8"

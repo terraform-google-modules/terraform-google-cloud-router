@@ -19,7 +19,7 @@ variable "name" {
   description = "The name of the interface"
 }
 
-variable "project" {
+variable "project_id" {
   type        = string
   description = "The project ID to deploy to"
 }
@@ -52,16 +52,26 @@ variable "interconnect_attachment" {
   default     = null
 }
 
-
-# TODO(https://github.com/hashicorp/terraform/issues/19898): Convert these
-# to objects once optional variables are supported.
-
-# Type: list(object), with fields:
-# - peer_ip_address (string, required): IP address of the BGP interface outside Google Cloud Platform.
-# - peer_asn (string, required): Peer BGP Autonomous System Number (ASN).
-# - advertised_route_priority (number, optional): The priority of routes advertised to this BGP peer.
 variable "peers" {
-  type        = any
+  type = list(object({
+    name                           = string
+    peer_ip_address                = string
+    peer_asn                       = string
+    advertised_route_priority      = optional(number)
+    zero_advertised_route_priority = optional(bool)
+    bfd = object({
+      session_initialization_mode = string
+      min_transmit_interval       = optional(number)
+      min_receive_interval        = optional(number)
+      multiplier                  = optional(number)
+    })
+    md5_authentication_key = optional(object({
+      name = string
+      key  = string
+    }))
+    export_policies = optional(list(string))
+    import_policies = optional(list(string))
+  }))
   description = "BGP peers for this interface."
   default     = []
 }

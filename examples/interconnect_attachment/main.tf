@@ -14,17 +14,13 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 3.0"
-}
-
 module "cloud_router" {
-  source = "../../"
+  source = "../.."
 
-  name    = "example-router"
-  project = "example-project"
-  network = "default"
-  region  = "us-central1"
+  name       = "example-router"
+  project_id = "example-project"
+  network    = "default"
+  region     = "us-central1"
 
   bgp = {
     asn               = 65000
@@ -33,7 +29,9 @@ module "cloud_router" {
 }
 
 module "interconnect_attachment" {
-  source  = "../../modules/interconnect_attachment"
+  source = "../../modules/interconnect_attachment"
+  # version = "~> 7.0"
+
   name    = "example-attachment"
   project = "example-project"
   region  = "us-central1"

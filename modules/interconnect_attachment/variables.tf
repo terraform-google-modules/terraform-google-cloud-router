@@ -37,6 +37,7 @@ variable "region" {
 variable "interconnect" {
   type        = string
   description = "URL of the underlying Interconnect object that this attachment's traffic will traverse through."
+  default     = ""
 }
 
 variable "admin_enabled" {
@@ -57,6 +58,18 @@ variable "bandwidth" {
   default     = "BPS_10G"
 }
 
+variable "mtu" {
+  type        = string
+  description = "Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440."
+  default     = null
+}
+
+variable "edge_availability_domain" {
+  type        = string
+  description = "Desired availability domain for the attachment. Only available for type PARTNER, at creation time."
+  default     = null
+}
+
 variable "description" {
   type        = string
   description = "An optional description of this resource"
@@ -75,20 +88,57 @@ variable "vlan_tag8021q" {
   default     = null
 }
 
-# TODO(https://github.com/hashicorp/terraform/issues/19898): Convert these
-# to objects once optional variables are supported.
-
-# Type: object, with fields:
-# - name (string, required): The name of the interface
-variable "interface" {
-  description = "Interface to deploy for this attachment."
-  type        = any
+variable "encryption" {
+  type        = string
+  description = "Indicates the user-supplied encryption option of this interconnect attachment."
+  default     = "NONE"
 }
 
-# Type: object, with fields:
-# - peer_asn (string, required): Peer BGP Autonomous System Number (ASN).
-# - advertised_route_priority (number, optional): The priority of routes advertised to this BGP peer.
+variable "stack_type" {
+  description = "The stack type for this interconnect attachment. Possible values are IPV4_ONLY and IPV4_IPV6."
+  type        = string
+  default     = "IPV4_ONLY"
+}
+
+variable "ipsec_internal_addresses" {
+  type        = list(string)
+  description = "URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC."
+  default     = []
+}
+
+variable "create_interface" {
+  type        = bool
+  description = "Whether to create router interface (and peer) for this attachment. Set this to false for PARTNER type."
+  default     = true
+}
+
+variable "interface" {
+  description = "Interface to deploy for this attachment."
+  type = object({
+    name = string
+  })
+  default = null
+}
+
 variable "peer" {
   description = "BGP Peer for this attachment."
-  type        = any
+  type = object({
+    name                           = string
+    peer_asn                       = string
+    advertised_route_priority      = optional(number)
+    zero_advertised_route_priority = optional(bool)
+    export_policies                = optional(list(string))
+    import_policies                = optional(list(string))
+    bfd = optional(object({
+      session_initialization_mode = string
+      min_transmit_interval       = optional(number)
+      min_receive_interval        = optional(number)
+      multiplier                  = optional(number)
+    }))
+    md5_authentication_key = optional(object({
+      name = string
+      key  = string
+    }))
+  })
+  default = null
 }

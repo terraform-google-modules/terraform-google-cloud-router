@@ -24,7 +24,7 @@ variable "network" {
   description = "A reference to the network to which this router belongs"
 }
 
-variable "project" {
+variable "project_id" {
   type        = string
   description = "The project ID to deploy to"
 }
@@ -34,9 +34,17 @@ variable "region" {
   description = "Region where the router resides"
 }
 
-# TODO(https://github.com/hashicorp/terraform/issues/19898): Convert these
-# to objects once optional variables are supported.
+variable "description" {
+  type        = string
+  description = "An optional description of this resource"
+  default     = null
+}
 
+variable "encrypted_interconnect_router" {
+  type        = bool
+  description = "An optional field to indicate if a router is dedicated to use with encrypted Interconnect Attachment"
+  default     = false
+}
 
 # Type: object, with fields:
 # - asn (string, required): Local BGP Autonomous System Number (ASN).
@@ -44,10 +52,20 @@ variable "region" {
 # - advertised_ip_ranges (list(object), optional): User-specified list of individual IP ranges to advertise.
 #   - range (string, required): The IP range to advertise.
 #   - description (string, optional): User-specified description for the IP range.
+# - keepalive_interval (integer, optional): Period of time in seconds to wait before sending a new BGP keepalive message to the peer.
 variable "bgp" {
   description = "BGP information specific to this router."
-  type        = any
-  default     = null
+  type = object({
+    asn               = string
+    advertise_mode    = optional(string, "CUSTOM")
+    advertised_groups = optional(list(string))
+    advertised_ip_ranges = optional(list(object({
+      range       = string
+      description = optional(string)
+    })), [])
+    keepalive_interval = optional(number)
+  })
+  default = null
 }
 
 # Type: list(object), with fields:
@@ -55,11 +73,14 @@ variable "bgp" {
 # - nat_ip_allocate_option (string, optional): How external IPs should be allocated for this NAT. Defaults to MANUAL_ONLY if nat_ips are set, else AUTO_ONLY.
 # - source_subnetwork_ip_ranges_to_nat (string, optional): How NAT should be configured per Subnetwork. Defaults to ALL_SUBNETWORKS_ALL_IP_RANGES.
 # - nat_ips (list(number), optional): Self-links of NAT IPs.
+# - drain_nat_ips (list(number), optional): Self-links of NAT IPs to be drained.
 # - min_ports_per_vm (number, optional): Minimum number of ports allocated to a VM from this NAT.
+# - max_ports_per_vm (number, optional): Maximum number of ports allocated to a VM from this NAT. This field can only be set when enableDynamicPortAllocation is enabled.
 # - udp_idle_timeout_sec (number, optional): Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
 # - icmp_idle_timeout_sec (number, optional): Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 # - tcp_established_idle_timeout_sec (number, optional): Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
 # - tcp_transitory_idle_timeout_sec (number, optional): Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
+# - tcp_time_wait_timeout_sec (number, optional): Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
 # - log_config (object, optional):
 #    - filter: Specifies the desired filtering of logs on this NAT. Defaults to "ALL".
 # - subnetworks (list(objects), optional):
@@ -68,6 +89,33 @@ variable "bgp" {
 #   - secondary_ip_range_names (string, optional): List of the secondary ranges of the subnetwork that are allowed to use NAT.
 variable "nats" {
   description = "NATs to deploy on this router."
-  type        = any
-  default     = []
+  type = list(object({
+    name                                = string
+    nat_ip_allocate_option              = optional(string)
+    source_subnetwork_ip_ranges_to_nat  = optional(string)
+    nat_ips                             = optional(list(string), [])
+    drain_nat_ips                       = optional(list(string), [])
+    min_ports_per_vm                    = optional(number)
+    max_ports_per_vm                    = optional(number)
+    udp_idle_timeout_sec                = optional(number)
+    icmp_idle_timeout_sec               = optional(number)
+    tcp_established_idle_timeout_sec    = optional(number)
+    tcp_transitory_idle_timeout_sec     = optional(number)
+    tcp_time_wait_timeout_sec           = optional(number)
+    enable_endpoint_independent_mapping = optional(bool)
+    enable_dynamic_port_allocation      = optional(bool)
+
+    log_config = optional(object({
+      enable = optional(bool, true)
+      filter = optional(string, "ALL")
+    }), {})
+
+    subnetworks = optional(list(object({
+      name                     = string
+      source_ip_ranges_to_nat  = list(string)
+      secondary_ip_range_names = optional(list(string))
+    })), [])
+
+  }))
+  default = []
 }

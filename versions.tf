@@ -15,17 +15,17 @@
  */
 
 terraform {
-  required_version = ">= 0.13"
+  required_version = ">= 1.3"
   required_providers {
 
     google = {
       source  = "hashicorp/google"
-      version = "~> 3.53"
+      version = ">= 4.51, < 8"
     }
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-cloud-router/v1.0.0"
+    module_name = "blueprints/terraform/terraform-google-cloud-router/v9.0.0"
   }
 
 }

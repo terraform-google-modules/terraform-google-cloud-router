@@ -7,6 +7,9 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
+
+
 ## [9.0.0](https://github.com/terraform-google-modules/terraform-google-cloud-router/compare/v8.3.0...v9.0.0) (2026-04-07)
 
 

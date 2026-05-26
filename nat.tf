@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-
 resource "google_compute_router_nat" "nats" {
   for_each = {
     for n in var.nats :
-    n.name => 
+    n.name => *
   }
 
   name                                = each.value.name

@@ -78,6 +78,7 @@ spec:
       - name: description
         description: An optional description of this resource
         varType: string
+        defaultValue: null
       - name: encrypted_interconnect_router
         description: An optional field to indicate if a router is dedicated to use with encrypted Interconnect Attachment
         varType: bool
@@ -95,6 +96,7 @@ spec:
               })), [])
               keepalive_interval = optional(number)
             })
+        defaultValue: null
       - name: nats
         description: NATs to deploy on this router.
         varType: |-
